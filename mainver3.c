@@ -458,8 +458,8 @@ int main() {
 	for(nDebateNum = 1; nDebateNum <= 3; nDebateNum += 1) {
 	
 		// Pre-game settings
-		nPlayerScore = 0;
-		nBotScore = 0;
+		nPlayerTotalScore = 0;
+		nBotTotalScore = 0;
 		
 		n1stChoiceCount = 0;				// Counters to determine if repititions happen
 		n2ndChoiceCount = 0;				// in choices, used in selectStatement() function
@@ -484,16 +484,16 @@ int main() {
 			
 			nPlayerChoice = playerSelectStatement();
 			
-			playerAddScore(nDebateNum, nRound, nPlayerChoice, &nPlayerScore, &n1stChoiceCount, &n2ndChoiceCount, &n3rdChoiceCount, &n4thChoiceCount);
+			playerAddScore(nDebateNum, nRound, nPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3, &n1stChoiceCount, &n2ndChoiceCount, &n3rdChoiceCount, &n4thChoiceCount);
 			//sleep (1);
 			
-			botStatement(nDebateNum, nRound, &nBotScore);
+			botStatement(nDebateNum, nRound, &nBotTotalScore &nBotScoreRound1, &nBotScoreRound1, &nBotScoreRound1, );
 			
-			printf	("\nDEBUG Score: %d, Bot Score: %d, 1stChoiceCount: %d, n2ndChoiceCount: %d, n3rdChoiceCount: %d, n4thChoiceCount: %d\n\n", nPlayerScore, nBotScore, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
+			printf	("\nDEBUG Score: %d, Bot Score: %d, 1stChoiceCount: %d, n2ndChoiceCount: %d, n3rdChoiceCount: %d, n4thChoiceCount: %d\n\n", nPlayerTotalScore, nBotTotalScore, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
 			//sleep (1);
 		}
 		
-		displayDebateSummary(nDebateNum, nPlayerScore, nBotScore, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
+		displayDebateSummary(nDebateNum, nPlayerTotalScore, nBotTotalScore, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
 		
 		if (nDebateNum == 1) {
 			printf ("Would you like to start the second debate? <Y/N>: ");
