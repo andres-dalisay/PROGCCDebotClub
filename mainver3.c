@@ -630,13 +630,13 @@ int main() {
 	int nPlayerChoice;					// Argument choice selected by player
 	
 	int nPlayerTotalScore;				// Player score
-	int nPlayerScoreRound1 = 0;			// Player score for individual rounds
-	int nPlayerScoreRound2 = 0;
-	int nPlayerScoreRound3 = 0;
+	int nPlayerScoreRound1;				// Player score for individual rounds
+	int nPlayerScoreRound2;
+	int nPlayerScoreRound3;
 	
-	int nRoundOneChoice = 0;
-	int nRoundTwoChoice = 0;
-	int nRoundThreeChoice = 0;
+	int nRoundOneChoice 	= 0;
+	int nRoundTwoChoice 	= 0;
+	int nRoundThreeChoice 	= 0;
 	
 	int n1stChoiceCount;				// Counters to determine if repititions happen
 	int n2ndChoiceCount;				// in choices, used in playerAddScore() function
@@ -644,9 +644,9 @@ int main() {
 	int n4thChoiceCount;
 	
 	int nBotTotalScore;					// Bot score
-	int nBotScoreRound1 = 0;			// Bot score for individual rounds
-	int nBotScoreRound2 = 0;
-	int nBotScoreRound3 = 0;
+	int nBotScoreRound1 	= 0;		// Bot score for individual rounds
+	int nBotScoreRound2 	= 0;
+	int nBotScoreRound3 	= 0;
 	
 	startGame();
 	
@@ -656,14 +656,32 @@ int main() {
 	
 	for(nDebateNum = 1; nDebateNum <= 3; nDebateNum += 1) {
 	
-		// Pre-game settings
-		nPlayerTotalScore = 0;
-		nBotTotalScore = 0;
+		// Pre-game reset settings
+		nPlayerTotalScore 	= 0;
+		nPlayerScoreRound1 	= 0;	
+		nPlayerScoreRound2 	= 0;
+		nPlayerScoreRound3 	= 0;
 		
-		n1stChoiceCount = 0;				// Counters to determine if repititions happen
-		n2ndChoiceCount = 0;				// in choices, used in selectStatement() function
-		n3rdChoiceCount = 0;
-		n4thChoiceCount = 0;
+		nRoundOneChoice 	= 0;
+		nRoundTwoChoice 	= 0;
+		nRoundThreeChoice 	= 0;
+		
+		n1stChoiceCount 	= 0;			
+		n2ndChoiceCount 	= 0;			
+		n3rdChoiceCount 	= 0;
+		n4thChoiceCount 	= 0;
+		
+		n1stChoiceCount 	= 0;				
+		n2ndChoiceCount 	= 0;				
+		n3rdChoiceCount 	= 0;
+		n4thChoiceCount 	= 0;
+		
+		
+		nBotTotalScore 		= 0;
+		nBotScoreRound1 	= 0;	
+		nBotScoreRound2 	= 0;
+		nBotScoreRound3 	= 0;
+		
 		
 		displayDebateDetails(nDebateNum);
 		
