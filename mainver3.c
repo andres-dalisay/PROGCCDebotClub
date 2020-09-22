@@ -5,6 +5,31 @@ void clrScreen () {
 	system("cls");
 }
 
+void startGame () {
+	int cSelect = ' ';
+	int cTemp;
+	
+	printf("Welcome to PROGCC Debot Club!\n\n");
+
+	
+	while (!(cSelect == 'y' || cSelect == 'Y')){
+		
+		printf("Would you like to start the game? <Y/N>: ");
+		scanf("%c%c", &cSelect, &cTemp);
+		
+		if (cSelect == 'n' || cSelect == 'N') {
+			printf("\n\n");
+			printf("The game will now end.");
+			exit(0); 							//LOOK FOR ALTERNATIVE TO exit(0);
+		}
+		
+		else if (cSelect != 'y' && cSelect != 'Y'){
+			printf("%c is not a valid response!\n\n", cSelect);
+		}
+		
+	}
+}
+
 void displayDebateDetails (int nDebateNum){
 	
 	switch (nDebateNum){
@@ -31,16 +56,32 @@ void displayDebateDetails (int nDebateNum){
 	//sleep (2);
 }
 
-void displayArgChoices (int nDebateNum) {
+void displayRoundNumber(int nRound) {
+	printf	("\n");
+	printf	("		- Round %d -", nRound);
+	printf	("\n\n");
+}
+
+void displayArgChoices (int nDebateNum, int nRound) {
+	
+	if (nRound == 1) {
+		printf	("Opening Statement (Input either 1, 2, 3, or 4):\n");
+	}
+	else {
+		printf	("Your response (Input either 1, 2, 3, or 4):\n");
+	}
 	
 	switch (nDebateNum){
 		
-		case 1:	printf (" [1] Homework is necessary because it reinforces what students learn in the classroom.\n");
+		case 1:	
+				printf (" [1] Homework is necessary because it reinforces what students learn in the classroom.\n");
 				printf (" [2] Years of data show that homework is an effective way of supplementing discussions.\n");
 				printf (" [3] I don't know about you, but our forefathers would be mad if we ban homeworks.\n");
 				printf (" [4] Homeworks are like the peanut to a peanut butter jelly sandwich!\n");
 				break;
 	}
+	
+	printf ("\n");
 }
 
 int playerSelectStatement () {
@@ -472,6 +513,17 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 	sleep (1);
 }
 
+void varDebug (int nPlayerTotalScore, int nPlayerScoreRound1, int nPlayerScoreRound2, int nPlayerScoreRound3, int nBotTotalScore, int nBotScoreRound1, int nBotScoreRound2, int nBotScoreRound3, int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount, int n4thChoiceCount) {	
+	printf	("\n");
+	printf	("DEBUG\n");
+	printf	("\n");
+	printf	("nPlayerTotalScore: %d\nnPlayerScoreRound1: %d\nnPlayerScoreRound2: %d\nnPlayerScoreRound3: %d\n", nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3);
+	printf	("\n");
+	printf	("nBotTotalScore: %d\nnBotScoreRound1: %d\nnBotScoreRound2: %d\nnBotScoreRound3: %d\n", nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3);
+	printf	("\n");
+	printf	("n1stChoiceCount: %d\nn2ndChoiceCount: %d\nn3rdChoiceCount: %d\nn4thChoiceCount: %d\n", n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
+}
+
 void checkBonuses (int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount, int n4thChoiceCount) {
 	if (n1stChoiceCount >= 1 && n2ndChoiceCount == 0 && n3rdChoiceCount >= 1 && n4thChoiceCount == 0){				// All Odd Responses
 		printf("All Odd");
@@ -563,27 +615,7 @@ int main() {
 	int n3rdChoiceCount;
 	int n4thChoiceCount;
 	
-	printf("Welcome to PROGCC Debot Club!\n\n");
-
-	
-	while (!(cSelect == 'y' || cSelect == 'Y')){
-		
-		printf("Would you like to start the game? <Y/N>: ");
-		scanf("%c%c", &cSelect, &cTemp);
-		
-		if (cSelect == 'n' || cSelect == 'N') {
-			printf("\n\n");
-			printf("The game will now end.");
-			exit(0); 							//LOOK FOR ALTERNATIVE TO exit(0);
-		}
-		
-		else if (cSelect != 'y' && cSelect != 'Y'){
-			printf("%c is not a valid response!\n\n", cSelect);
-		}
-		
-	}
-	
-	cSelect = ' ';						//Resets cSelect for later select prompts
+	startGame();
 	
 	printf("The game will now start!");
 	sleep(1);
@@ -604,17 +636,11 @@ int main() {
 		
 		for(nRound = 1; nRound <= 3; nRound += 1){
 				
-			printf	("\n");
-			printf	("		- Round %d -", nRound);
-			printf	("\n\n");
+			displayRoundNumber(nRound);
 			
 			//sleep (1);
 			
-			printf	("Opening Statement (Input either 1, 2, 3, or 4):\n");
-			
-			displayArgChoices(nDebateNum);
-			
-			printf	("\n");
+			displayArgChoices(nDebateNum, nRound);
 			
 			nPlayerChoice = playerSelectStatement();
 			
@@ -623,14 +649,7 @@ int main() {
 			
 			botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRound1, &nBotScoreRound2, &nBotScoreRound3);
 			
-			printf	("\n");
-			printf	("DEBUG\n");
-			printf	("\n");
-			printf	("nPlayerTotalScore: %d\nnPlayerScoreRound1: %d\nnPlayerScoreRound2: %d\nnPlayerScoreRound3: %d\n", nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3);
-			printf	("\n");
-			printf	("nBotTotalScore: %d\nnBotScoreRound1: %d\nnBotScoreRound2: %d\nnBotScoreRound3: %d\n", nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3);
-			printf	("\n");
-			printf	("n1stChoiceCount: %d\nn2ndChoiceCount: %d\nn3rdChoiceCount: %d\nn4thChoiceCount: %d\n", n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
+			varDebug(nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
 			
 			//sleep (1);
 		}
@@ -648,6 +667,8 @@ int main() {
 		else {
 			printf ("Thank you for playing!");
 		}
+		
+		cSelect = ' ';						//Resets cSelect for later select prompts
 		
 	}
 
