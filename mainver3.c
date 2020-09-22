@@ -1,14 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void botStatement (int nDebateNum, int nRound, int *nBotScore, int *nBotScoreRound1, int *nBotScoreRound2, int *nBotScoreRound3) {
-	int nScoreAdded, nPenalty;
+void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRound1, int *nBotScoreRound2, int *nBotScoreRound3) {
+	int nScoreAdded, nPenalty, nBotScoreRound;
 	
 	if (nDebateNum == 1){
 		if (nRound == 1) {
 			nScoreAdded = 3;
 			nPenalty = 2;
-			*nBotScore += nScoreAdded - nPenalty;
+			nBotScoreRound = nScoreAdded - nPenalty;
+			
+			*nBotScoreRound1 = nBotScoreRound;
+			
+			*nBotTotalScore += nBotScoreRound;
 			
 			printf("Team Bot Annie Cal responds with: It is a well-known fact that homework provides\n");
 			printf("additional unnecessary cognitive load for students!\n\n");
@@ -21,7 +25,11 @@ void botStatement (int nDebateNum, int nRound, int *nBotScore, int *nBotScoreRou
 		else if (nRound == 2) {
 			nScoreAdded = 3;
 			nPenalty = 1;
-			*nBotScore += nScoreAdded - nPenalty;
+			nBotScoreRound = nScoreAdded - nPenalty;
+			
+			*nBotScoreRound2 = nBotScoreRound;
+			
+			*nBotTotalScore += nBotScoreRound;
 			
 			printf("Team Bot Annie Cal responds with: There are better ways to asses learning other than\n");
 			printf("homeworks!\n\n");
@@ -34,7 +42,14 @@ void botStatement (int nDebateNum, int nRound, int *nBotScore, int *nBotScoreRou
 		else if (nRound == 3) {
 			nScoreAdded = 3;
 			nPenalty = 0;
-			*nBotScore += nScoreAdded - nPenalty;
+			nBotScoreRound = nScoreAdded - nPenalty;
+			
+			printf	("nBotTotalScore: %d\nnBotScoreRound1: %d\nnBotScoreRound2: %d\nnBotScoreRound3: %d\n", *nBotTotalScore, *nBotScoreRound1, *nBotScoreRound2, *nBotScoreRound3);
+			printf("BotScoreRound: %d\n\n", nBotScoreRound);
+			
+			*nBotScoreRound3 = nBotScoreRound;
+			
+			*nBotTotalScore += nBotScoreRound;
 			
 			printf("Team Bot Annie Cal responds with: Learning also happens on weekends despite homework,\n");
 			printf("when students get to reflect on class discussions.\n\n");
@@ -44,11 +59,23 @@ void botStatement (int nDebateNum, int nRound, int *nBotScore, int *nBotScoreRou
 		}
 	}
 	
-	else if (nDebateNum == 2) {
+	/*else if (nDebateNum == 2) {
 		if (nRound == 1) {
 			nScoreAdded = 3;
 			nPenalty = 0;
-			*nBotScore += nScoreAdded - nPenalty;
+			nBotScoreRound = nScoreAdded - nPenalty;
+			
+			if (nRound == 1) {
+				*nBotScoreRound1 = nBotScoreRound;
+			}
+			else if (nRound == 2){
+				*nBotScoreRound2 = nBotScoreRound;
+			}
+			else if (nRound == 3){
+				*nBotScoreRound3 = nBotScoreRound;
+			}
+			
+			*nBotTotalScore += nBotScoreRound;
 			
 			printf("a\n");
 			printf("b\n\n");
@@ -61,7 +88,19 @@ void botStatement (int nDebateNum, int nRound, int *nBotScore, int *nBotScoreRou
 		else if (nRound == 2) {
 			nScoreAdded = 3;
 			nPenalty = 0;
-			*nBotScore += nScoreAdded - nPenalty;
+			nBotScoreRound = nScoreAdded - nPenalty;
+			
+			if (nRound == 1) {
+				*nBotScoreRound1 = nBotScoreRound;
+			}
+			else if (nRound == 2){
+				*nBotScoreRound2 = nBotScoreRound;
+			}
+			else if (nRound == 3){
+				*nBotScoreRound3 = nBotScoreRound;
+			}
+			
+			*nBotTotalScore += nBotScoreRound;
 			
 			printf("c\n");
 			printf("d\n\n");
@@ -74,7 +113,19 @@ void botStatement (int nDebateNum, int nRound, int *nBotScore, int *nBotScoreRou
 		else if (nRound == 3) {
 			nScoreAdded = 3;
 			nPenalty = 2;
-			*nBotScore += nScoreAdded - nPenalty;
+			nBotScoreRound = nScoreAdded - nPenalty;
+			
+			if (nRound == 1) {
+				*nBotScoreRound1 = nBotScoreRound;
+			}
+			else if (nRound == 2){
+				*nBotScoreRound2 = nBotScoreRound;
+			}
+			else if (nRound == 3){
+				*nBotScoreRound3 = nBotScoreRound;
+			}
+			
+			*nBotTotalScore += nBotScoreRound;
 			
 			printf("e\n");
 			printf("f\n\n");
@@ -88,7 +139,19 @@ void botStatement (int nDebateNum, int nRound, int *nBotScore, int *nBotScoreRou
 		if (nRound == 1) {
 			nScoreAdded = 3;
 			nPenalty = 0;
-			*nBotScore += nScoreAdded - nPenalty;
+			nBotScoreRound = nScoreAdded - nPenalty;
+			
+			if (nRound == 1) {
+				*nBotScoreRound1 = nBotScoreRound;
+			}
+			else if (nRound == 2){
+				*nBotScoreRound2 = nBotScoreRound;
+			}
+			else if (nRound == 3){
+				*nBotScoreRound3 = nBotScoreRound;
+			}
+			
+			*nBotTotalScore += nBotScoreRound;
 			
 			printf("a\n");
 			printf("b\n\n");
@@ -101,7 +164,19 @@ void botStatement (int nDebateNum, int nRound, int *nBotScore, int *nBotScoreRou
 		else if (nRound == 2) {
 			nScoreAdded = 3;
 			nPenalty = 0;
-			*nBotScore += nScoreAdded - nPenalty;
+			nBotScoreRound = nScoreAdded - nPenalty;
+			
+			if (nRound == 1) {
+				*nBotScoreRound1 = nBotScoreRound;
+			}
+			else if (nRound == 2){
+				*nBotScoreRound2 = nBotScoreRound;
+			}
+			else if (nRound == 3){
+				*nBotScoreRound3 = nBotScoreRound;
+			}
+			
+			*nBotTotalScore += nBotScoreRound;
 			
 			printf("c\n");
 			printf("d\n\n");
@@ -114,7 +189,19 @@ void botStatement (int nDebateNum, int nRound, int *nBotScore, int *nBotScoreRou
 		else if (nRound == 3) {
 			nScoreAdded = 3;
 			nPenalty = 0;
-			*nBotScore += nScoreAdded - nPenalty;
+			nBotScoreRound = nScoreAdded - nPenalty;
+			
+			if (nRound == 1) {
+				*nBotScoreRound1 = nBotScoreRound;
+			}
+			else if (nRound == 2){
+				*nBotScoreRound2 = nBotScoreRound;
+			}
+			else if (nRound == 3){
+				*nBotScoreRound3 = nBotScoreRound;
+			}
+			
+			*nBotTotalScore += nScoreAdded - nPenalty;
 			
 			printf("e\n");
 			printf("f\n\n");
@@ -122,7 +209,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotScore, int *nBotScoreRou
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Compelling Argument*\n", nScoreAdded);
 		}
-	}
+	}*/
 	
 	sleep (1);
 }
@@ -190,7 +277,7 @@ void checkBonuses (int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount
 
 }
 
-void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nTotalBotScore, int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount, int n4thChoiceCount) {
+void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScoreRound1, int nPlayerScoreRound2, int nPlayerScoreRound3, int nTotalBotScore, int nBotScoreRound1,  int nBotScoreRound2, int nBotScoreRound3, int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount, int n4thChoiceCount) {
 	char * sRoundCount;
 	
 	if (nDebateNum == 1) {
@@ -207,19 +294,19 @@ void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nTotalBotSc
 	}
 	
 	printf ("Team ProgCC Points:\n");
-	printf ("Round 1: %d\n");
-	printf ("Round 2: %d\n");
-	printf ("Round 3: %d\n");
+	printf ("Round 1: %d\n", nPlayerScoreRound1);
+	printf ("Round 2: %d\n", nPlayerScoreRound2);
+	printf ("Round 3: %d\n", nPlayerScoreRound3);
 	
 	checkBonuses(n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);											//check for bonuses
 	
 	
 	printf ("Total: %d points\n\n", nTotalPlayerScore);
 	
-	printf ("Team Bot Annie Cal Points:\n ");
-	printf ("Round 1: %d\n");
-	printf ("Round 2: %d\n");
-	printf ("Round 3: %d\n");
+	printf ("Team Bot Annie Cal Points:\n");
+	printf ("Round 1: %d\n", nBotScoreRound1);
+	printf ("Round 2: %d\n", nBotScoreRound2);
+	printf ("Round 3: %d\n", nBotScoreRound3);
 	printf ("\n");
 	printf ("Total: %d points\n\n", nTotalBotScore);
 	
@@ -535,13 +622,21 @@ int main() {
 			playerAddScore(nDebateNum, nRound, nPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3, &n1stChoiceCount, &n2ndChoiceCount, &n3rdChoiceCount, &n4thChoiceCount);
 			//sleep (1);
 			
-			botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRound1, &nBotScoreRound2, &nBotScoreRound1);
+			botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRound1, &nBotScoreRound2, &nBotScoreRound3);
 			
-			printf	("\n\nDEBUG Score: %d\nnPlayerScoreRound1: %d\nnPlayerScoreRound2: %d\nnPlayerScoreRound3: %d\n\nnBot Score: %d\nn1stChoiceCount: %d\nn2ndChoiceCount: %d\nn3rdChoiceCount: %d\nn4thChoiceCount: %d\n\n", nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
+			printf	("\n");
+			printf	("DEBUG\n");
+			printf	("\n");
+			printf	("nPlayerTotalScore: %d\nnPlayerScoreRound1: %d\nnPlayerScoreRound2: %d\nnPlayerScoreRound3: %d\n", nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3);
+			printf	("\n");
+			printf	("nBotTotalScore: %d\nnBotScoreRound1: %d\nnBotScoreRound2: %d\nnBotScoreRound3: %d\n", nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3);
+			printf	("\n");
+			printf	("n1stChoiceCount: %d\nn2ndChoiceCount: %d\nn3rdChoiceCount: %d\nn4thChoiceCount: %d\n", n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
+			
 			//sleep (1);
 		}
 		
-		displayDebateSummary(nDebateNum, nPlayerTotalScore, nBotTotalScore, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
+		displayDebateSummary(nDebateNum, nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
 		
 		if (nDebateNum == 1) {
 			printf ("Would you like to start the second debate? <Y/N>: ");
