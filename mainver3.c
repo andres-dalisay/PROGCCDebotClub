@@ -1,6 +1,264 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void clrScreen () {
+	system("cls");
+}
+
+void displayDebateDetails (int nDebateNum){
+	
+	switch (nDebateNum){
+		
+		case 1:	printf("		- The First Debate -\n");
+				printf("Topic			: Homework should be banned\n");
+				printf("Affirmative team	: Team ProgCC\n");
+				printf("Opposing team		: Team Bot Annie Cal\n");
+				break;
+		
+		case 2: printf("		- The Second Debate -\n");
+				printf("Topic			: 222222\n");
+				printf("Affirmative team	: Team ProgCC\n");
+				printf("Opposing team		: Team Bot Annie Cal\n");
+				break;
+		
+		case 3: printf("		- The Third Debate -\n");
+				printf("Topic			: 3333333\n");
+				printf("Affirmative team	: Team ProgCC\n");
+				printf("Opposing team		: Team Bot Annie Cal\n");
+				break;
+				
+	}
+	//sleep (2);
+}
+
+void displayArgChoices (int nDebateNum) {
+	
+	switch (nDebateNum){
+		
+		case 1:	printf (" [1] Homework is necessary because it reinforces what students learn in the classroom.\n");
+				printf (" [2] Years of data show that homework is an effective way of supplementing discussions.\n");
+				printf (" [3] I don't know about you, but our forefathers would be mad if we ban homeworks.\n");
+				printf (" [4] Homeworks are like the peanut to a peanut butter jelly sandwich!\n");
+				break;
+	}
+}
+
+int playerSelectStatement () {
+	int nChoice;
+	
+	while(nChoice != 1 && nChoice != 2 && nChoice != 3 && nChoice != 4 ) {
+		
+		printf("Your choice: ");
+		scanf("%d", &nChoice);
+		
+		if (nChoice == 1 || nChoice == 2 || nChoice == 3 || nChoice == 4){
+		continue;															// CHANGE
+		}
+		else {
+			printf("%d is not a valid choice, please input either 1, 2, 3, or 4.\n\n", nChoice);
+		}
+	}
+	
+	return nChoice;
+}
+
+void playerScoreSummary (int nDebateNum, int nRepetitionStatus, int nChoice, int nScoreAdded, int nPenalty) {				// NOTES: needs to take into account debate number since answers are different
+	
+	if (nDebateNum == 1) {
+		if (nRepetitionStatus == 0){
+			if (nChoice == 1) {
+				printf("Team ProgCC: Homework is necessary because it reinforces what students learn in the classroom.\n\n");
+				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for Assertiveness*\n\n", nScoreAdded); 			
+			}															
+			
+			else if (nChoice == 2) {
+				printf("Team ProgCC: Years of data show that homework is an effective way of supplementing discussions.\n\n");
+				//sleep (2);
+			}
+			
+			else if (nChoice == 3) {
+				printf("Team ProgCC: I don't know about you, but our forefathers would be mad if we ban homeworks.\n\n");
+				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for History*", nScoreAdded);
+				printf("Team ProgCC gets -%d Argument Points for Ad Hominem*\n\n", nPenalty);
+				
+			}
+			
+			else if (nChoice == 4) {
+				printf("Team ProgCC: Homeworks are like the peanut to a peanut butter jelly sandwich!\n\n");
+				//sleep (2);
+			}
+			
+		}
+		
+		else {
+			printf("*Team ProgCC gets 0 Argument Points for Repetition*\n\n");
+			//sleep (2);
+		}	
+	}
+	
+	else if (nDebateNum == 2) {
+		if (nRepetitionStatus == 0) {
+			
+			if (nChoice == 1) {
+				
+			}
+			
+			else if (nChoice == 2) {
+				
+			}
+			
+			else if (nChoice == 3) {
+				
+			}
+			
+			else if (nChoice == 4) {
+				
+			}
+			
+		}
+		else {
+			printf("*Team ProgCC gets 0 Argument Points for Repetition*\n\n");
+		}	
+	}
+	
+	else if (nDebateNum == 3) {
+		if (nRepetitionStatus == 0) {
+			
+			if (nChoice == 1) {
+				
+			}
+			
+			else if (nChoice == 2) {
+				
+			}
+			
+			else if (nChoice == 3) {
+				
+			}
+			
+			else if (nChoice == 4) {
+				
+			}
+			
+		}
+		else {
+			printf("*Team ProgCC gets 0 Argument Points for Repetition*\n\n");
+		}	
+	}
+			
+}
+
+void playerAddScore (int nDebateNum, int nRound, int nChoice, int *nPlayerTotalScore, int *nPlayerScoreRound1, int *nPlayerScoreRound2, int *nPlayerScoreRound3, int *n1stChoiceCount, int *n2ndChoiceCount, int *n3rdChoiceCount, int *n4thChoiceCount) {
+	
+	int nScoreAdded, nPenalty, nPlayerScoreRound;
+	int nRepetition = 0;
+	
+	if (nChoice == 1) {
+		if (*n1stChoiceCount == 0){
+			nScoreAdded = 3;
+			nPenalty = 0;
+			nPlayerScoreRound = nScoreAdded - nPenalty;
+			
+			if (nRound == 1) {
+				*nPlayerScoreRound1 = nPlayerScoreRound;
+			}
+			else if (nRound == 2){
+				*nPlayerScoreRound2 = nPlayerScoreRound;
+			}
+			else if (nRound == 3){
+				*nPlayerScoreRound3 = nPlayerScoreRound;
+			}
+			
+			*nPlayerTotalScore += nPlayerScoreRound;
+			*n1stChoiceCount += 1;										// Adds count to 1st choice for detecting repetitions
+		}
+		else {
+			*n1stChoiceCount += 1;										// if nNthChoiceCount != 0, no points, add to choice and repetition count
+			nRepetition = 1;
+		}
+	}
+	
+	else if (nChoice == 2) {										// 2nd choice scoring: 3 - 1 penalty = 2
+		if (*n2ndChoiceCount == 0){
+			nScoreAdded = 3;
+			nPenalty = 1;
+			nPlayerScoreRound = nScoreAdded - nPenalty;
+			
+			if (nRound == 1) {
+				*nPlayerScoreRound1 = nPlayerScoreRound;
+			}
+			else if (nRound == 2){
+				*nPlayerScoreRound2 = nPlayerScoreRound;
+			}
+			else if (nRound == 3){
+				*nPlayerScoreRound3 = nPlayerScoreRound;
+			}
+			
+			*nPlayerTotalScore += nPlayerScoreRound;
+			*n2ndChoiceCount += 1;
+		}
+		else {
+			*n2ndChoiceCount += 1;
+			nRepetition = 1;
+		}
+	}
+	
+	else if (nChoice == 3) {										// 3rd choice scoring: 3 - 2 penalty = 1
+		if (*n3rdChoiceCount == 0){
+			nScoreAdded = 3;
+			nPenalty = 2;
+			nPlayerScoreRound = nScoreAdded - nPenalty;
+			
+			if (nRound == 1) {
+				*nPlayerScoreRound1 = nPlayerScoreRound;
+			}
+			else if (nRound == 2){
+				*nPlayerScoreRound2 = nPlayerScoreRound;
+			}
+			else if (nRound == 3){
+				*nPlayerScoreRound3 = nPlayerScoreRound;
+			}
+			
+			*nPlayerTotalScore += nPlayerScoreRound;
+			*n3rdChoiceCount += 1;
+		}
+		else {
+			*n3rdChoiceCount += 1;
+			nRepetition = 1;
+		}
+	}
+	
+	else if (nChoice == 4) {										// 4th choice scoring: 3 - 4 penalty = -1
+		if (*n4thChoiceCount == 0){
+			nScoreAdded = 3;
+			nPenalty = 4;
+			nPlayerScoreRound = nScoreAdded - nPenalty;
+			
+			if (nRound == 1) {
+				*nPlayerScoreRound1 = nPlayerScoreRound;
+			}
+			else if (nRound == 2){
+				*nPlayerScoreRound2 = nPlayerScoreRound;
+			}
+			else if (nRound == 3){
+				*nPlayerScoreRound3 = nPlayerScoreRound;
+			}
+			
+			*nPlayerTotalScore += nPlayerScoreRound;
+			*n4thChoiceCount += 1;
+		}
+		else {
+			*n4thChoiceCount += 1;
+			nRepetition = 1;
+		}
+	}
+	
+	playerScoreSummary(nDebateNum, nRepetition, nChoice, nScoreAdded, nPenalty);
+	
+}
+
 void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRound1, int *nBotScoreRound2, int *nBotScoreRound3) {
 	int nScoreAdded, nPenalty, nBotScoreRound;
 	
@@ -214,48 +472,6 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 	sleep (1);
 }
 
-void clrScreen () {
-	system("cls");
-}
-
-void displayDebateDetails (int nDebateNum){
-	
-	switch (nDebateNum){
-		
-		case 1:	printf("		- The First Debate -\n");
-				printf("Topic			: Homework should be banned\n");
-				printf("Affirmative team	: Team ProgCC\n");
-				printf("Opposing team		: Team Bot Annie Cal\n");
-				break;
-		
-		case 2: printf("		- The Second Debate -\n");
-				printf("Topic			: 222222\n");
-				printf("Affirmative team	: Team ProgCC\n");
-				printf("Opposing team		: Team Bot Annie Cal\n");
-				break;
-		
-		case 3: printf("		- The Third Debate -\n");
-				printf("Topic			: 3333333\n");
-				printf("Affirmative team	: Team ProgCC\n");
-				printf("Opposing team		: Team Bot Annie Cal\n");
-				break;
-				
-	}
-	//sleep (2);
-}
-
-void displayArgChoices (int nDebateNum) {
-	
-	switch (nDebateNum){
-		
-		case 1:	printf (" [1] Homework is necessary because it reinforces what students learn in the classroom.\n");
-				printf (" [2] Years of data show that homework is an effective way of supplementing discussions.\n");
-				printf (" [3] I don't know about you, but our forefathers would be mad if we ban homeworks.\n");
-				printf (" [4] Homeworks are like the peanut to a peanut butter jelly sandwich!\n");
-				break;
-	}
-}
-
 void checkBonuses (int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount, int n4thChoiceCount) {
 	if (n1stChoiceCount >= 1 && n2ndChoiceCount == 0 && n3rdChoiceCount >= 1 && n4thChoiceCount == 0){				// All Odd Responses
 		printf("All Odd");
@@ -323,239 +539,22 @@ void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScor
 	//clrScreen();
 }
 
-void playerScoreSummary (int nDebateNum, int nRepetitionStatus, int nChoice, int nScoreAdded, int nPenalty) {				// NOTES: needs to take into account debate number since answers are different
-	
-	if (nDebateNum == 1) {
-		if (nRepetitionStatus == 0){
-			if (nChoice == 1) {
-				printf("Team ProgCC: Homework is necessary because it reinforces what students learn in the classroom.\n\n");
-				//sleep (2);
-				printf("*Team ProgCC gets %d Argument Points for Assertiveness*\n\n", nScoreAdded); 			
-			}															
-			
-			else if (nChoice == 2) {
-				printf("Team ProgCC: Years of data show that homework is an effective way of supplementing discussions.\n\n");
-				//sleep (2);
-			}
-			
-			else if (nChoice == 3) {
-				printf("Team ProgCC: I don't know about you, but our forefathers would be mad if we ban homeworks.\n\n");
-				//sleep (2);
-				printf("*Team ProgCC gets %d Argument Points for History*", nScoreAdded);
-				printf("Team ProgCC gets -%d Argument Points for Ad Hominem*\n\n", nPenalty);
-				
-			}
-			
-			else if (nChoice == 4) {
-				printf("Team ProgCC: Homeworks are like the peanut to a peanut butter jelly sandwich!\n\n");
-				//sleep (2);
-			}
-			
-		}
-		
-		else {
-			printf("*Team ProgCC gets 0 Argument Points for Repetition*\n\n");
-			//sleep (2);
-		}	
-	}
-	
-	else if (nDebateNum == 2) {
-		if (nRepetitionStatus == 0) {
-			
-			if (nChoice == 1) {
-				
-			}
-			
-			else if (nChoice == 2) {
-				
-			}
-			
-			else if (nChoice == 3) {
-				
-			}
-			
-			else if (nChoice == 4) {
-				
-			}
-			
-		}
-		else {
-			printf("*Team ProgCC gets 0 Argument Points for Repetition*\n\n");
-		}	
-	}
-	
-	else if (nDebateNum == 3) {
-		if (nRepetitionStatus == 0) {
-			
-			if (nChoice == 1) {
-				
-			}
-			
-			else if (nChoice == 2) {
-				
-			}
-			
-			else if (nChoice == 3) {
-				
-			}
-			
-			else if (nChoice == 4) {
-				
-			}
-			
-		}
-		else {
-			printf("*Team ProgCC gets 0 Argument Points for Repetition*\n\n");
-		}	
-	}
-			
-}
-
-void playerAddScore (int nDebateNum, int nRound, int nChoice, int *nPlayerTotalScore, int *nPlayerScoreRound1, int *nPlayerScoreRound2, int *nPlayerScoreRound3, int *n1stChoiceCount, int *n2ndChoiceCount, int *n3rdChoiceCount, int *n4thChoiceCount) {
-	
-	int nScoreAdded, nPenalty, nPlayerScoreRound;
-	int nRepetition = 0;
-	
-	if (nChoice == 1) {
-		if (*n1stChoiceCount == 0){
-			nScoreAdded = 3;
-			nPenalty = 0;
-			nPlayerScoreRound = nScoreAdded - nPenalty;
-			
-			if (nRound == 1) {
-				*nPlayerScoreRound1 = nPlayerScoreRound;
-			}
-			else if (nRound == 2){
-				*nPlayerScoreRound2 = nPlayerScoreRound;
-			}
-			else if (nRound == 3){
-				*nPlayerScoreRound3 = nPlayerScoreRound;
-			}
-			
-			*nPlayerTotalScore += nPlayerScoreRound;
-			*n1stChoiceCount += 1;										// Adds count to 1st choice for detecting repetitions
-		}
-		else {
-			*n1stChoiceCount += 1;										// if nNthChoiceCount != 0, no points, add to choice and repetition count
-			nRepetition = 1;
-		}
-	}
-	
-	else if (nChoice == 2) {										// 2nd choice scoring: 3 - 1 penalty = 2
-		if (*n2ndChoiceCount == 0){
-			nScoreAdded = 3;
-			nPenalty = 1;
-			nPlayerScoreRound = nScoreAdded - nPenalty;
-			
-			if (nRound == 1) {
-				*nPlayerScoreRound1 = nPlayerScoreRound;
-			}
-			else if (nRound == 2){
-				*nPlayerScoreRound2 = nPlayerScoreRound;
-			}
-			else if (nRound == 3){
-				*nPlayerScoreRound3 = nPlayerScoreRound;
-			}
-			
-			*nPlayerTotalScore += nPlayerScoreRound;
-			*n2ndChoiceCount += 1;
-		}
-		else {
-			*n2ndChoiceCount += 1;
-			nRepetition = 1;
-		}
-	}
-	
-	else if (nChoice == 3) {										// 3rd choice scoring: 3 - 2 penalty = 1
-		if (*n3rdChoiceCount == 0){
-			nScoreAdded = 3;
-			nPenalty = 2;
-			nPlayerScoreRound = nScoreAdded - nPenalty;
-			
-			if (nRound == 1) {
-				*nPlayerScoreRound1 = nPlayerScoreRound;
-			}
-			else if (nRound == 2){
-				*nPlayerScoreRound2 = nPlayerScoreRound;
-			}
-			else if (nRound == 3){
-				*nPlayerScoreRound3 = nPlayerScoreRound;
-			}
-			
-			*nPlayerTotalScore += nPlayerScoreRound;
-			*n3rdChoiceCount += 1;
-		}
-		else {
-			*n3rdChoiceCount += 1;
-			nRepetition = 1;
-		}
-	}
-	
-	else if (nChoice == 4) {										// 4th choice scoring: 3 - 4 penalty = -1
-		if (*n4thChoiceCount == 0){
-			nScoreAdded = 3;
-			nPenalty = 4;
-			nPlayerScoreRound = nScoreAdded - nPenalty;
-			
-			if (nRound == 1) {
-				*nPlayerScoreRound1 = nPlayerScoreRound;
-			}
-			else if (nRound == 2){
-				*nPlayerScoreRound2 = nPlayerScoreRound;
-			}
-			else if (nRound == 3){
-				*nPlayerScoreRound3 = nPlayerScoreRound;
-			}
-			
-			*nPlayerTotalScore += nPlayerScoreRound;
-			*n4thChoiceCount += 1;
-		}
-		else {
-			*n4thChoiceCount += 1;
-			nRepetition = 1;
-		}
-	}
-	
-	playerScoreSummary(nDebateNum, nRepetition, nChoice, nScoreAdded, nPenalty);
-	
-}
-
-int playerSelectStatement () {
-	int nChoice;
-	
-	while(nChoice != 1 && nChoice != 2 && nChoice != 3 && nChoice != 4 ) {
-		
-		printf("Your choice: ");
-		scanf("%d", &nChoice);
-		
-		if (nChoice == 1 || nChoice == 2 || nChoice == 3 || nChoice == 4){
-		continue;															// CHANGE
-		}
-		else {
-			printf("%d is not a valid choice, please input either 1, 2, 3, or 4.\n\n", nChoice);
-		}
-	}
-	
-	return nChoice;
-}
-
 int main() {
 	char cSelect = ' ';					// User prompt for starting the game
 	char cTemp;
 	
 	int nDebateNum;						// Refers to debate number, e.g. 'First Debate', 'Second Debate', 'Third Debate'
 	
-	
 	int nRound;							// Round number
 	int nPlayerChoice;					// Argument choice selected by player
 	
-	int nPlayerTotalScore;					// Player score
-	int nPlayerScoreRound1 = 0;
+	int nPlayerTotalScore;				// Player score
+	int nPlayerScoreRound1 = 0;			// Player score for individual rounds
 	int nPlayerScoreRound2 = 0;
 	int nPlayerScoreRound3 = 0;
 	
-	int nBotTotalScore;						// Bot score
-	int nBotScoreRound1 = 0;
+	int nBotTotalScore;					// Bot score
+	int nBotScoreRound1 = 0;			// Bot score for individual rounds
 	int nBotScoreRound2 = 0;
 	int nBotScoreRound3 = 0;
 	
