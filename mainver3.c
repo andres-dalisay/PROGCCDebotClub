@@ -324,18 +324,6 @@ void playerScoreSummary (int nDebateNum, int nRepetitionStatus, int nChoice, int
 			
 }
 
-void playerAddToRoundScore(int nPlayerScore, int nRound, int *nPlayerScoreRound1, int *nPlayerScoreRound2, int *nPlayerScoreRound3){
-	if (nRound == 1) {
-		*nPlayerScoreRound1 = nPlayerScore;
-	}
-	else if (nRound == 2){
-		*nPlayerScoreRound2 = nPlayerScore;
-	}
-	else if (nRound == 3){
-		*nPlayerScoreRound3 = nPlayerScore;
-	}
-}
-
 void playerAddScore (int nDebateNum, int nRound, int nChoice, int *nPlayerTotalScore, int *nPlayerScoreRound1, int *nPlayerScoreRound2, int *nPlayerScoreRound3, int *n1stChoiceCount, int *n2ndChoiceCount, int *n3rdChoiceCount, int *n4thChoiceCount) {
 	
 	int nScoreAdded, nPenalty, nPlayerScoreRound;
@@ -347,7 +335,15 @@ void playerAddScore (int nDebateNum, int nRound, int nChoice, int *nPlayerTotalS
 			nPenalty = 0;
 			nPlayerScoreRound = nScoreAdded - nPenalty;
 			
-			playerAddToRoundScore(nPlayerScoreRound, nRound, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3);
+			if (nRound == 1) {
+				*nPlayerScoreRound1 = nPlayerScoreRound;
+			}
+			else if (nRound == 2){
+				*nPlayerScoreRound2 = nPlayerScoreRound;
+			}
+			else if (nRound == 3){
+				*nPlayerScoreRound3 = nPlayerScoreRound;
+			}
 			
 			*nPlayerTotalScore += nPlayerScoreRound;
 			*n1stChoiceCount += 1;										// Adds count to 1st choice for detecting repetitions
@@ -364,7 +360,15 @@ void playerAddScore (int nDebateNum, int nRound, int nChoice, int *nPlayerTotalS
 			nPenalty = 1;
 			nPlayerScoreRound = nScoreAdded - nPenalty;
 			
-			playerAddToRoundScore(nPlayerScoreRound, nRound, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3);
+			if (nRound == 1) {
+				*nPlayerScoreRound1 = nPlayerScoreRound;
+			}
+			else if (nRound == 2){
+				*nPlayerScoreRound2 = nPlayerScoreRound;
+			}
+			else if (nRound == 3){
+				*nPlayerScoreRound3 = nPlayerScoreRound;
+			}
 			
 			*nPlayerTotalScore += nPlayerScoreRound;
 			*n2ndChoiceCount += 1;
@@ -381,7 +385,15 @@ void playerAddScore (int nDebateNum, int nRound, int nChoice, int *nPlayerTotalS
 			nPenalty = 2;
 			nPlayerScoreRound = nScoreAdded - nPenalty;
 			
-			playerAddToRoundScore(nPlayerScoreRound, nRound, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3);
+			if (nRound == 1) {
+				*nPlayerScoreRound1 = nPlayerScoreRound;
+			}
+			else if (nRound == 2){
+				*nPlayerScoreRound2 = nPlayerScoreRound;
+			}
+			else if (nRound == 3){
+				*nPlayerScoreRound3 = nPlayerScoreRound;
+			}
 			
 			*nPlayerTotalScore += nPlayerScoreRound;
 			*n3rdChoiceCount += 1;
@@ -398,7 +410,15 @@ void playerAddScore (int nDebateNum, int nRound, int nChoice, int *nPlayerTotalS
 			nPenalty = 4;
 			nPlayerScoreRound = nScoreAdded - nPenalty;
 			
-			playerAddToRoundScore(nPlayerScoreRound, nRound, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3);
+			if (nRound == 1) {
+				*nPlayerScoreRound1 = nPlayerScoreRound;
+			}
+			else if (nRound == 2){
+				*nPlayerScoreRound2 = nPlayerScoreRound;
+			}
+			else if (nRound == 3){
+				*nPlayerScoreRound3 = nPlayerScoreRound;
+			}
 			
 			*nPlayerTotalScore += nPlayerScoreRound;
 			*n4thChoiceCount += 1;
@@ -443,14 +463,14 @@ int main() {
 	int nPlayerChoice;					// Argument choice selected by player
 	
 	int nPlayerTotalScore;					// Player score
-	int nPlayerScoreRound1;
-	int nPlayerScoreRound2;
-	int nPlayerScoreRound3;
+	int nPlayerScoreRound1 = 0;
+	int nPlayerScoreRound2 = 0;
+	int nPlayerScoreRound3 = 0;
 	
 	int nBotTotalScore;						// Bot score
-	int nBotScoreRound1;
-	int nBotScoreRound2;
-	int nBotScoreRound3;
+	int nBotScoreRound1 = 0;
+	int nBotScoreRound2 = 0;
+	int nBotScoreRound3 = 0;
 	
 	int n1stChoiceCount;				// Counters to determine if repititions happen
 	int n2ndChoiceCount;				// in choices, used in playerAddScore() function
@@ -515,7 +535,7 @@ int main() {
 			playerAddScore(nDebateNum, nRound, nPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3, &n1stChoiceCount, &n2ndChoiceCount, &n3rdChoiceCount, &n4thChoiceCount);
 			//sleep (1);
 			
-			botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRound1, &nBotScoreRound2, &nBotScoreRound3);
+			botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRound1, &nBotScoreRound2, &nBotScoreRound1);
 			
 			printf	("\n\nDEBUG Score: %d\nnPlayerScoreRound1: %d\nnPlayerScoreRound2: %d\nnPlayerScoreRound3: %d\n\nnBot Score: %d\nn1stChoiceCount: %d\nn2ndChoiceCount: %d\nn3rdChoiceCount: %d\nn4thChoiceCount: %d\n\n", nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
 			//sleep (1);
