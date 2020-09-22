@@ -537,7 +537,7 @@ void varDebug (int nPlayerTotalScore, int nPlayerScoreRound1, int nPlayerScoreRo
 
 int checkBonuses (int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount, int n4thChoiceCount, int nRoundOneChoice, int nRoundTwoChoice, int nRoundThreeChoice) {
 	int nBonusPoints = 0;
-	printf("Bonuses:");
+	printf("Bonuses:\n");
 	
 	// All Odd Responses
 	if (n1stChoiceCount >= 1 && n2ndChoiceCount == 0 && n3rdChoiceCount >= 1 && n4thChoiceCount == 0){				
@@ -551,20 +551,20 @@ int checkBonuses (int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount,
 	}
 	// All In Due Time here
 	else if (nRoundThreeChoice - nRoundTwoChoice == 1 && nRoundTwoChoice - nRoundOneChoice == 1) {
-		printf("All in due time: 4\n");
+		printf("	- All in due time: 4\n");
 		nBonusPoints += 4;
 	}
 		
 	// Book ends
 	if (n1stChoiceCount <= 1 && n2ndChoiceCount <= 1 && n3rdChoiceCount <= 1 && n4thChoiceCount <= 1) {
 		if (nRoundOneChoice == 1 && nRoundThreeChoice == 4 || nRoundOneChoice == 4 && nRoundThreeChoice == 1){
-			printf("Book ends: 4\n");
+			printf("	- Book ends: 4\n");
 			nBonusPoints += 4;
 		}
 	}
 	//Absurd opening
 	if (nRoundOneChoice == 4) {
-		printf("Absurd opening: 2\n");
+		printf("	- Absurd opening: 2\n");
 		nBonusPoints += 2;
 	}
 	
@@ -591,19 +591,19 @@ void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScor
 	}
 	
 	printf ("Team ProgCC Points:\n");
-	printf ("Round 1: %d\n", nPlayerScoreRound1);
-	printf ("Round 2: %d\n", nPlayerScoreRound2);
-	printf ("Round 3: %d\n", nPlayerScoreRound3);
+	printf ("	- Round 1: %d\n", nPlayerScoreRound1);
+	printf ("	- Round 2: %d\n", nPlayerScoreRound2);
+	printf ("	- Round 3: %d\n", nPlayerScoreRound3);
 	
 	nBonusPoints = checkBonuses(n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);											//check for bonuses
 	nTotalPlayerScore += nBonusPoints;
-	
+	printf ("\n");
 	printf ("Total: %d points\n\n", nTotalPlayerScore);
 	
 	printf ("Team Bot Annie Cal Points:\n");
-	printf ("Round 1: %d\n", nBotScoreRound1);
-	printf ("Round 2: %d\n", nBotScoreRound2);
-	printf ("Round 3: %d\n", nBotScoreRound3);
+	printf ("	- Round 1: %d\n", nBotScoreRound1);
+	printf ("	- Round 2: %d\n", nBotScoreRound2);
+	printf ("	- Round 3: %d\n", nBotScoreRound3);
 	printf ("\n");
 	printf ("Total: %d points\n\n", nTotalBotScore);
 	
@@ -700,7 +700,7 @@ int main() {
 			
 			botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRound1, &nBotScoreRound2, &nBotScoreRound3);
 			
-			varDebug(nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
+			//varDebug(nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
 			
 			//sleep (1);
 		}
