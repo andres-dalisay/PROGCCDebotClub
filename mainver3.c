@@ -144,16 +144,18 @@ displayArgChoices (int nDebateNum, int nRound) {
 */
 char
 playerSelectStatement () {
-	int nChoice = 0;
-	//char cTemp;
+	char nChoice = ' ';		// nChoice has a char datatype instead of int because
+	char cTemp;				// of an infinite loop bug in the input validation
+							// while loop caused by entering a string when nChoice is
+							// an int.
 	
-	while(!(nChoice == 1 || nChoice == 2 || nChoice == 3 || nChoice == 4)) {				// As of now, inputting a negative sign (-) with
+	while(!(nChoice == '1' || nChoice == '2' || nChoice == '3' || nChoice == '4')) {				// As of now, inputting a negative sign (-) with
 																									// a valid choice (1, 2, 3, 4) is accepted because
 		printf("Your choice: ");																	// nChoice is a char, not an int. Not sure how to fix.
-		scanf("%d", &nChoice);
+		scanf("%c%c", &nChoice, &cTemp);
 		
-		if (!(nChoice == 1 || nChoice == 2 || nChoice == 3 || nChoice == 4)){
-			printf("%d is not a valid choice, please input either 1, 2, 3, or 4.", nChoice);		
+		if (!(nChoice == '1' || nChoice == '2' || nChoice == '3' || nChoice == '4')){
+			printf("%c is not a valid choice, please input either 1, 2, 3, or 4.", nChoice);		
 			newLine(2);
 		}
 		
@@ -176,40 +178,40 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 	if (nDebateNum == 1) {
 		if (nRepetitionStatus == 0){
 			if (nChoice == '1') {
-				printf("Team ProgCC: Homework is necessary because it reinforces what students learn in the classroom.\n\n");
-				//sleep (2);
+				printf("Team ProgCC: Homework is necessary because it reinforces what students learn in the classroom.");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Assertiveness*", nScoreAdded); 			
 			}															
 			
 			else if (nChoice == '2') {
-				printf("Team ProgCC: Years of data show that homework is an effective way of supplementing discussions.\n\n");
-				//sleep (2);
+				printf("Team ProgCC: Years of data show that homework is an effective way of supplementing discussions.");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Use of Statistics*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Possible Selection Bias*", nPenalty);
 			}
 			
 			else if (nChoice == '3') {
-				printf("Team ProgCC: I don't know about you, but our forefathers would be mad if we ban homeworks.\n\n");
-				//sleep (2);
+				printf("Team ProgCC: I don't know about you, but our forefathers would be mad if we ban homeworks.");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for History*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Ad Hominem*", nPenalty);
 				
 			}
 			
 			else if (nChoice == '4') {
-				printf("Team ProgCC: Homeworks are like the peanut to a peanut butter jelly sandwich!\n\n");
-				//sleep (2);
+				printf("Team ProgCC: Homeworks are like the peanut to a peanut butter jelly sandwich!");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Analogy*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Baseless Argument*", nPenalty);
 			}
 			
-			printf("\n\n"); 
+			newLine(2);
 			
 		}
 		
 		else {
-			printf("*Team ProgCC gets 0 Argument Points for Repetition*\n\n");
-			//sleep (2);
+			printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			newLine(2);
 		}	
 	}
 	
@@ -217,37 +219,38 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 		if (nRepetitionStatus == 0) {
 			
 			if (nChoice == '1') {
-				printf("Team ProgCC: A mass extinction event on Earth may naturally occur sooner or later.\n\n");
-				//sleep (2);
+				printf("Team ProgCC: A mass extinction event on Earth may naturally occur sooner or later.");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Realism*", nScoreAdded);
 			}
 			
 			else if (nChoice == '2') {
-				printf("Team ProgCC: We may be able to get more resources from Mars.\n\n");
-				//sleep (2);
+				printf("Team ProgCC: We may be able to get more resources from Mars.");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Resourcefulness*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Slight Greed*", nPenalty);
 			}
 			
 			else if (nChoice == '3') {
-				printf("Team ProgCC: It may help us understand our own planet more.\n\n");
-				//sleep (2);
+				printf("Team ProgCC: It may help us understand our own planet more.");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Concern for Earth*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Not Specific*", nPenalty);
 			}
 			
 			else if (nChoice == '4') {
-				printf("Team ProgCC: We can fulfill our destiny to explore the great unknown!\n\n");
-				//sleep (2);
+				printf("Team ProgCC: We can fulfill our destiny to explore the great unknown!");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Concern for Fatalism*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Vagueness*", nPenalty);
 			}
 			
-			printf("\n\n"); 
+			newLine(2);
 			
 		}
 		else {
-			printf("*Team ProgCC gets 0 Argument Points for Repetition*\n\n");
+			printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			newLine(2);
 		}	
 	}
 	
@@ -255,37 +258,38 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 		if (nRepetitionStatus == 0) {
 			
 			if (nChoice == '1') {
-				printf("Team ProgCC: All the heroes in Dota 2 are unlocked from the start.\n\n");
-				//sleep (2);
+				printf("Team ProgCC: All the heroes in Dota 2 are unlocked from the start.");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Freedom of Choice*\n", nScoreAdded);
 			}
 			
 			else if (nChoice == '2') {
-				printf("Team ProgCC: The biggest Dota 2 tournament has the largest prize pool in esports history.\n\n");
-				//sleep (2);
+				printf("Team ProgCC: The biggest Dota 2 tournament has the largest prize pool in esports history.");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Prize Pool Flex*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Bravado*", nPenalty);
 			}
 			
 			else if (nChoice == '3') {
-				printf("Team ProgCC: Dota 2 is a much more complex game.\n\n");
-				//sleep (2);
+				printf("Team ProgCC: Dota 2 is a much more complex game.");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for \"To be fair, you have to have a very high IQ to understand Dota 2\"*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Complex != Better*", nPenalty);
 			}
 			
 			else if (nChoice == '4') {
-				printf("Team ProgCC: Dota 2 is better, and LoL players can’t deny.\n\n");
-				//sleep (2);
+				printf("Team ProgCC: Dota 2 is better, and LoL players can’t deny.");
+				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for the Memes*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Overused Joke*", nPenalty);
 			}
 			
-			printf("\n\n"); 
+			newLine(2);
 			
 		}
 		else {
-			printf("*Team ProgCC gets 0 Argument Points for Repetition*\n\n");
+			printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			newLine(2);
 		}	
 	}
 			
@@ -599,6 +603,54 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 	
 }
 
+/*	Used mainly for nRoundXChoice variables to convert from nChoice ASCII value to proper integer.
+	@param 	(int*)	nRoundOneChoice is the player's choice in round one of the debate.
+	@param 	(int*)	nRoundTwoChoice is the player's choice in round two of the debate.
+	@param 	(int*)	nRoundThreeChoice is the player's choice in round three of the debate.	
+*/
+void
+convertASCIIValueToInt (int *nRoundOneChoice, int *nRoundTwoChoice, int *nRoundThreeChoice) {
+	
+	if (*nRoundOneChoice == 49){
+		*nRoundOneChoice = 1;
+	}
+	else if (*nRoundOneChoice == 50){
+		*nRoundOneChoice = 2;
+	}
+	else if (*nRoundOneChoice == 51){
+		*nRoundOneChoice = 3;
+	}
+	else if (*nRoundOneChoice == 52){
+		*nRoundOneChoice = 4;
+	}
+	
+	if (*nRoundTwoChoice == 49){
+		*nRoundTwoChoice = 1;
+	}
+	else if (*nRoundTwoChoice == 50){
+		*nRoundTwoChoice = 2;
+	}
+	else if (*nRoundTwoChoice == 51){
+		*nRoundTwoChoice = 3;
+	}
+	else if (*nRoundTwoChoice == 52){
+		*nRoundTwoChoice = 4;
+	}
+	
+	if (*nRoundThreeChoice == 49){
+		*nRoundThreeChoice = 1;
+	}
+	else if (*nRoundThreeChoice == 50){
+		*nRoundThreeChoice = 2;
+	}
+	else if (*nRoundThreeChoice == 51){
+		*nRoundThreeChoice = 3;
+	}
+	else if (*nRoundThreeChoice == 52){
+		*nRoundThreeChoice = 4;
+	}
+}
+
 /*	Used to trace certain variables in-between debate rounds for debug purposes.
 	@param 	(int)	nPlayerTotalScore is the current total score of the player
 	@param 	(int)	nPlayerScoreRoundOne is the number of points obtained by the player in round one.
@@ -643,6 +695,7 @@ varDebug (int nPlayerTotalScore, int nPlayerScoreRoundOne, int nPlayerScoreRound
 int
 checkBonuses (int nFirstChoiceCount, int nSecondChoiceCount, int nThirdChoiceCount, int nFourthChoiceCount, int nRoundOneChoice, int nRoundTwoChoice, int nRoundThreeChoice) {
 	int nBonusPoints = 0;
+	
 	printf("Bonuses:\n");
 	
 	// All Odd Responses
@@ -744,7 +797,8 @@ void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScor
 		printf("Team Bot Annie Cal wins The %s Debate!", sRoundCount);
 	}
 	else {
-		printf("The debate is a draw!\n\n");
+		printf("The debate is a draw!");
+		newLine(2);
 	}
 	newLine(2);
 }
@@ -765,7 +819,8 @@ int continueGame (int nDebateNum){
 			scanf  ("%c%c", &cSelect, &cTemp);
 			
 			if (!(cSelect == 'y' || cSelect == 'Y' || cSelect == 'n' || cSelect == 'N')){
-				printf("%c is not a valid response!\n\n", cSelect);
+				printf("%c is not a valid response!", cSelect);
+				newLine(2);
 			}	
 		}
 		
@@ -785,7 +840,8 @@ int continueGame (int nDebateNum){
 			scanf  ("%c%c", &cSelect, &cTemp);
 			
 			if (!(cSelect == 'y' || cSelect == 'Y' || cSelect == 'n' || cSelect == 'N')){
-				printf("%c is not a valid response!\n\n", cSelect);
+				printf("%c is not a valid response!", cSelect);
+				newLine(2);
 			}	
 		}
 		
@@ -882,6 +938,11 @@ int main() {
 					cPlayerChoice = playerSelectStatement();
 					playerAddScore(nDebateNum, nRound, cPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRoundOne, &nPlayerScoreRoundTwo, &nPlayerScoreRoundThree, &nFirstChoiceCount, &nSecondChoiceCount, &nThirdChoiceCount, &nFourthChoiceCount, &nRoundOneChoice, &nRoundTwoChoice, &nRoundThreeChoice);
 					botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRoundOne, &nBotScoreRoundTwo, &nBotScoreRoundThree);
+					
+					convertASCIIValueToInt(&nRoundOneChoice, &nRoundTwoChoice, &nRoundThreeChoice);		// Because cPlayerChoice is a char, nRoundXChoice variables come out as their
+																										// ASCII value equivalents. Thus, they need to be changed to their real integer
+																										// counterparts because the "Absurd opening" bonus in the checkBonuses() function
+																										// won't work with the ASCII value.
 					
 					/* Uncomment this to show trace values after each round */
 					//varDebug(nPlayerTotalScore, nPlayerScoreRoundOne, nPlayerScoreRoundTwo, nPlayerScoreRoundThree, nBotTotalScore, nBotScoreRoundOne, nBotScoreRoundTwo, nBotScoreRoundThree, nFirstChoiceCount, nSecondChoiceCount, nThirdChoiceCount, nFourthChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
