@@ -158,6 +158,7 @@ playerSelectStatement () {
 		}
 		
 	}
+	newLine(1);
 	
 	return nChoice;
 }
@@ -451,11 +452,12 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			*nBotTotalScore += nBotScoreRound;
 			
 			printf("Team Bot Annie Cal responds with: It is a well-known fact that homework provides\n");
-			printf("additional unnecessary cognitive load for students!\n\n");
-			//sleep (1);
+			printf("additional unnecessary cognitive load for students!");
+			newLine(2);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nScoreAdded);
-			printf("*Team Bot Annie Cal gets -%d Argument Points for Not Citing Sources*\n", nPenalty);
+			printf("*Team Bot Annie Cal gets -%d Argument Points for Not Citing Sources*", nPenalty);
+			newLine(2);
 		}
 		
 		else if (nRound == 2) {
@@ -468,11 +470,12 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			*nBotTotalScore += nBotScoreRound;
 			
 			printf("Team Bot Annie Cal responds with: There are better ways to asses learning other than\n");
-			printf("homeworks!\n\n");
-			//sleep (1);
+			printf("homeworks!");
+			newLine(2);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nScoreAdded);
-			printf("*Team Bot Annie Cal gets -%d Argument Points for No Evidence*\n", nPenalty);
+			printf("*Team Bot Annie Cal gets -%d Argument Points for No Evidence*", nPenalty);
+			newLine(2);
 		}
 		
 		else if (nRound == 3) {
@@ -485,10 +488,11 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			*nBotTotalScore += nBotScoreRound;
 			
 			printf("Team Bot Annie Cal responds with: Learning also happens on weekends despite homework,\n");
-			printf("when students get to reflect on class discussions.\n\n");
-			//sleep (1);
+			printf("when students get to reflect on class discussions.");
+			newLine(2);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Compelling Argument*\n", nScoreAdded);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Compelling Argument*", nScoreAdded);
+			newLine(2);
 		}
 	}
 	
@@ -502,10 +506,11 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("Shifting our focus to Mars may lead to neglect towards sustaining Earth.\n\n");
-			//sleep (1);
+			printf("Shifting our focus to Mars may lead to neglect towards sustaining Earth.");
+			newLine(2);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Environmentalism*\n", nScoreAdded);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Environmentalism*", nScoreAdded);
+			newLine(2);
 		}
 		
 		else if (nRound == 2) {
@@ -517,10 +522,11 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("We may risk contaminating the Martian environment.\n\n");
-			//sleep (1);
+			printf("We may risk contaminating the Martian environment.");
+			newLine(2);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Contamination-Conscious*\n", nScoreAdded);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Contamination-Conscious*", nScoreAdded);
+			newLine(2);
 		}
 		
 		else if (nRound == 3) {
@@ -532,11 +538,12 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("All that we need is on Earth.\n");
-			//sleep (1);
+			printf("All that we need is on Earth.");
+			newLine(2);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Contentedness*\n", nScoreAdded);
-			printf("*Team Bot Annie Cal gets -%d Argument Points for Denial of Current Issues*\n", nPenalty);
+			printf("*Team Bot Annie Cal gets -%d Argument Points for Denial of Current Issues*", nPenalty);
+			newLine(2);
 		}
 	}
 	
@@ -550,10 +557,11 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("League of Legends has a bigger playerbase.\n");
-			//sleep (1);
+			printf("League of Legends has a bigger playerbase.");
+			newLine(2);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Healthy Playerbase*\n", nScoreAdded);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Healthy Playerbase*", nScoreAdded);
+			newLine(2);
 		}
 		
 		else if (nRound == 2) {
@@ -565,10 +573,11 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("League of Legends doesn’t have a very steep learning curve to play.\n");
-			//sleep (1);
+			printf("League of Legends doesn’t have a very steep learning curve to play.");
+			newLine(2);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Accessibility*\n", nScoreAdded);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Accessibility*", nScoreAdded);
+			newLine(2);
 		}
 		
 		else if (nRound == 3) {
@@ -580,14 +589,14 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("League of Legends is better promoted with short animated movies and original songs.\n");
-			//sleep (1);
+			printf("League of Legends is better promoted with short animated movies and original songs.");
+			newLine(2);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Creativity*\n", nScoreAdded);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Creativity*", nScoreAdded);
+			newLine(2);
 		}
 	}
 	
-	sleep (1);
 }
 
 /*	Used to trace certain variables in-between debate rounds for debug purposes.
@@ -665,6 +674,8 @@ checkBonuses (int nFirstChoiceCount, int nSecondChoiceCount, int nThirdChoiceCou
 		nBonusPoints += 2;
 	}
 	
+	newLine(1);
+	
 	return nBonusPoints;
 	
 
@@ -694,45 +705,48 @@ void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScor
 	
 	if (nDebateNum == 1) {
 		sRoundCount = "First";
-		printf ("		- The %s Debate -\n", sRoundCount);
+		printf ("		- The %s Debate -", sRoundCount);
 	}
 	else if (nDebateNum == 2) {
 		sRoundCount = "Second";
-		printf ("		- The %s Debate -\n", sRoundCount);
+		printf ("		- The %s Debate -", sRoundCount);
 	}
 	else if (nDebateNum == 3) {
 		sRoundCount = "Third";
-		printf ("		- The %s Debate -\n", sRoundCount);
+		printf ("		- The %s Debate -", sRoundCount);
 	}
+	
+	newLine(2);
 	
 	printf ("Team ProgCC Points:\n");
 	printf ("	- Round 1: %d\n", nPlayerScoreRoundOne);
 	printf ("	- Round 2: %d\n", nPlayerScoreRoundTwo);
 	printf ("	- Round 3: %d\n", nPlayerScoreRoundThree);
+	newLine(1);
 	
 	nBonusPoints = checkBonuses(nFirstChoiceCount, nSecondChoiceCount, nThirdChoiceCount, nFourthChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);											//check for bonuses
 	nTotalPlayerScore += nBonusPoints;
-	printf ("\n");
-	printf ("Total: %d points\n\n", nTotalPlayerScore);
+	printf ("Total: %d points", nTotalPlayerScore);
+	newLine(2);
 	
 	printf ("Team Bot Annie Cal Points:\n");
 	printf ("	- Round 1: %d\n", nBotScoreRoundOne);
 	printf ("	- Round 2: %d\n", nBotScoreRoundTwo);
 	printf ("	- Round 3: %d\n", nBotScoreRoundThree);
 	printf ("\n");
-	printf ("Total: %d points\n\n", nTotalBotScore);
+	printf ("Total: %d points", nTotalBotScore);
+	newLine(2);
 	
 	if (nTotalPlayerScore > nTotalBotScore) {
-		printf("Team ProgCC wins The %s Debate!\n\n", sRoundCount);
+		printf("Team ProgCC wins The %s Debate!", sRoundCount);
 	}
 	else if (nTotalPlayerScore < nTotalBotScore) {
-		printf("Team Bot Annie Cal wins The %s Debate!\n\n", sRoundCount);
+		printf("Team Bot Annie Cal wins The %s Debate!", sRoundCount);
 	}
 	else {
 		printf("The debate is a draw!\n\n");
 	}
-	//sleep(3);
-	//clrScreen();
+	newLine(2);
 }
 
 /*	Asks user for Y/N input to continue to the next debate after the end of the first or second debate.
@@ -798,7 +812,7 @@ int main() {
 	char cPlayerChoice;			// Argument choice selected by player. Set to char datatype as int will cause problems in input validation when chars/strings are inputted, causing an infinite loop.
 	
 	int nPlayerTotalScore;		// Player score
-	int nPlayerScoreRoundOne;		// Player score for individual rounds
+	int nPlayerScoreRoundOne;	// Player score for individual rounds
 	int nPlayerScoreRoundTwo;
 	int nPlayerScoreRoundThree;		
 	
@@ -820,8 +834,9 @@ int main() {
 	
 	nStartGameState = startGame();
 	
-	if (nStartGameState == 1){					// Proceed with debate game if nStartGameState == 1
-		printf("The game will now start!");		
+	if (nStartGameState == 1){					// Proceed with game if nStartGameState == 1.
+		printf("The game will now start!");		// If user decides to quit at the start of the program,
+												// nStartGameState == 0 and the program exits.
 		sleep(2);
 		clrScreen();
 		
@@ -861,7 +876,7 @@ int main() {
 				displayDebateDetails(nDebateNum);
 				
 				/*------------------------------------------------------ROUND PROPER------------------------------------------------------*/
-				for(nRound = 1; nRound <= 3; nRound += 1){	
+				for(nRound = 1; nRound <= 3; nRound += 1){		// Repeats rounds 3 times
 					displayRoundNumber(nRound);			
 					displayArgChoices(nDebateNum, nRound);
 					cPlayerChoice = playerSelectStatement();
@@ -872,24 +887,23 @@ int main() {
 					//varDebug(nPlayerTotalScore, nPlayerScoreRoundOne, nPlayerScoreRoundTwo, nPlayerScoreRoundThree, nBotTotalScore, nBotScoreRoundOne, nBotScoreRoundTwo, nBotScoreRoundThree, nFirstChoiceCount, nSecondChoiceCount, nThirdChoiceCount, nFourthChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
 				}
 				
+				sleep(2);
 				/*------------------------------------------------------POST-DEBATE------------------------------------------------------*/
+				clrScreen();
 				displayDebateSummary(nDebateNum, nPlayerTotalScore, nPlayerScoreRoundOne,nPlayerScoreRoundTwo, nPlayerScoreRoundThree, nBotTotalScore, nBotScoreRoundOne, nBotScoreRoundTwo, nBotScoreRoundThree, nFirstChoiceCount, nSecondChoiceCount, nThirdChoiceCount, nFourthChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
 				
-				if (nDebateNum == 1 || nDebateNum == 2){
-					nStartGameState = continueGame(nDebateNum);
+				if (nDebateNum == 1 || nDebateNum == 2){			// Only runs continueGame() function after the first and second debates
+					nStartGameState = continueGame(nDebateNum);		// since the game will end after the third debate anyways.
+					clrScreen();
 				}
-				
 				else {
 					printf("Thank you for playing!");
-					nStartGameState = 0;
+					nStartGameState = 0;							// Ends the game by breaking the while loop.
 				}
 			}
 	}
-	
-	else {										// If user decides to quit at the start of the program,
-		printf("\n\n");							// nStartGameState == 0 and the program exits.
-		printf("The game will now end.");		
-	}
+	newLine(2);
+	printf("The game will now end.\n");
 	return 0;
 	
 }
