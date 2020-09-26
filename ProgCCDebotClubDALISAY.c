@@ -182,137 +182,205 @@ playerSelectStatement () {
 void
 playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char cChoice, int nScoreAdded, int nPenalty) {
 	
-	if (nDebateNum == 1) {					// Displays statements relevant to debate topic
-		if (nRepetitionStatus == 0){		// Checks for repetition
-			if (cChoice == '1') {
-				printf("Team ProgCC: Homework is necessary because it reinforces what students learn in the classroom.");
-				sleep(1);
-				newLine(2);
-				printf("*Team ProgCC gets %d Argument Points for Assertiveness*", nScoreAdded); 			
-			}															
+	if (nDebateNum == 1) {							// Displays statements relevant to debate topic	
+	
+		if (cChoice == '1') {
+			printf("Team ProgCC: Homework is necessary because it reinforces what students learn in the classroom.");
+			sleep(1);
+			newLine(2);
 			
-			else if (cChoice == '2') {
-				printf("Team ProgCC: Years of data show that homework is an effective way of supplementing discussions.");
-				sleep(1);
-				newLine(2);
+			// Check for repetition
+			if (nRepetitionStatus == 0){		
+				printf("*Team ProgCC gets %d Argument Points for Assertiveness*", nScoreAdded);
+			}
+			// If repetition is detected, player gets no points.
+			else {								
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}	
+		}															
+		
+		else if (cChoice == '2') {
+			printf("Team ProgCC: Years of data show that homework is an effective way of supplementing discussions.");
+			sleep(1);
+			newLine(2);
+			
+			if (nRepetitionStatus == 0){
 				printf("*Team ProgCC gets %d Argument Points for Use of Statistics*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Possible Selection Bias*", nPenalty);
 			}
+			else {
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}	
+		}
+		
+		else if (cChoice == '3') {
+			printf("Team ProgCC: I don't know about you, but our forefathers would be mad if we ban homeworks.");
+			sleep(1);
+			newLine(2);
 			
-			else if (cChoice == '3') {
-				printf("Team ProgCC: I don't know about you, but our forefathers would be mad if we ban homeworks.");
-				sleep(1);
-				newLine(2);
+			if (nRepetitionStatus == 0){		
 				printf("*Team ProgCC gets %d Argument Points for History*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Ad Hominem*", nPenalty);
-				
+			}
+
+			else {		
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
 			}
 			
-			else if (cChoice == '4') {
-				printf("Team ProgCC: Homeworks are like the peanut to a peanut butter jelly sandwich!");
-				sleep(1);
-				newLine(2);
-				printf("*Team ProgCC gets %d Argument Points for Analogy*\n", nScoreAdded);
-				printf("*Team ProgCC gets -%d Argument Points for Baseless Argument*", nPenalty);
-			}
-			
-			newLine(2);
 			
 		}
 		
-		else {				// If repetition is detected, player gets no points.
+		else if (cChoice == '4') {
+			printf("Team ProgCC: Homeworks are like the peanut to a peanut butter jelly sandwich!");
 			sleep(1);
-			printf("*Team ProgCC gets 0 Argument Points for Repetition*");
 			newLine(2);
-		}	
+			
+			if (nRepetitionStatus == 0){		
+				printf("*Team ProgCC gets %d Argument Points for Analogy*\n", nScoreAdded);
+				printf("*Team ProgCC gets -%d Argument Points for Baseless Argument*", nPenalty);
+			}
+
+			else {		
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}
+
+		}
+		
+		newLine(2);	
 	}
 	
 	else if (nDebateNum == 2) {
-		if (nRepetitionStatus == 0) {
 			
-			if (cChoice == '1') {
-				printf("Team ProgCC: A mass extinction event on Earth may naturally occur sooner or later.");
-				sleep(1);
-				newLine(2);
-				printf("*Team ProgCC gets %d Argument Points for Realism*", nScoreAdded);
+		if (cChoice == '1') {
+			printf("Team ProgCC: A mass extinction event on Earth may naturally occur sooner or later.");
+			sleep(1);
+			newLine(2);
+			
+			if (nRepetitionStatus == 0){		
+			printf("*Team ProgCC gets %d Argument Points for Realism*", nScoreAdded);
 			}
+
+			else {		
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}
+
+		}
+		
+		else if (cChoice == '2') {
+			printf("Team ProgCC: We may be able to get more resources from Mars.");
+			sleep(1);
+			newLine(2);
 			
-			else if (cChoice == '2') {
-				printf("Team ProgCC: We may be able to get more resources from Mars.");
-				sleep(1);
-				newLine(2);
+			if (nRepetitionStatus == 0){		
 				printf("*Team ProgCC gets %d Argument Points for Resourcefulness*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Slight Greed*", nPenalty);
 			}
+
+			else {		
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}
+		}
+		
+		else if (cChoice == '3') {
+			printf("Team ProgCC: It may help us understand our own planet more.");
+			sleep(1);
+			newLine(2);
 			
-			else if (cChoice == '3') {
-				printf("Team ProgCC: It may help us understand our own planet more.");
-				sleep(1);
-				newLine(2);
+			if (nRepetitionStatus == 0){		
 				printf("*Team ProgCC gets %d Argument Points for Concern for Earth*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Not Specific*", nPenalty);
 			}
+
+			else {		
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}
+		}
+		
+		else if (cChoice == '4') {
+			printf("Team ProgCC: We can fulfill our destiny to explore the great unknown!");
+			sleep(1);
+			newLine(2);
 			
-			else if (cChoice == '4') {
-				printf("Team ProgCC: We can fulfill our destiny to explore the great unknown!");
-				sleep(1);
-				newLine(2);
+			if (nRepetitionStatus == 0){		
 				printf("*Team ProgCC gets %d Argument Points for Concern for Fatalism*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Vagueness*", nPenalty);
 			}
-			
-			newLine(2);
+
+			else {		
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}
 			
 		}
-		else {
-			sleep(1);
-			printf("*Team ProgCC gets 0 Argument Points for Repetition*");
-			newLine(2);
-		}	
+		
+		newLine(2);
 	}
 	
 	else if (nDebateNum == 3) {
-		if (nRepetitionStatus == 0) {
+
+		if (cChoice == '1') {
+			printf("Team ProgCC: All the heroes in Dota 2 are unlocked from the start.");
+			sleep(1);
+			newLine(2);
 			
-			if (cChoice == '1') {
-				printf("Team ProgCC: All the heroes in Dota 2 are unlocked from the start.");
-				sleep(1);
-				newLine(2);
+			if (nRepetitionStatus == 0){		
 				printf("*Team ProgCC gets %d Argument Points for Freedom of Choice*\n", nScoreAdded);
 			}
+
+			else {			
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}
+		}
+		
+		else if (cChoice == '2') {
+			printf("Team ProgCC: The biggest Dota 2 tournament has the largest prize pool in esports history.");
+			sleep(1);
+			newLine(2);
 			
-			else if (cChoice == '2') {
-				printf("Team ProgCC: The biggest Dota 2 tournament has the largest prize pool in esports history.");
-				sleep(1);
-				newLine(2);
+			if (nRepetitionStatus == 0){		
 				printf("*Team ProgCC gets %d Argument Points for Prize Pool Flex*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Bravado*", nPenalty);
 			}
+
+			else {		
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}
+
+		}
+		
+		else if (cChoice == '3') {
+			printf("Team ProgCC: Dota 2 is a much more complex game.");
+			sleep(1);
+			newLine(2);
 			
-			else if (cChoice == '3') {
-				printf("Team ProgCC: Dota 2 is a much more complex game.");
-				sleep(1);
-				newLine(2);
+			if (nRepetitionStatus == 0){		
 				printf("*Team ProgCC gets %d Argument Points for \"To be fair, you have to have a very high IQ to understand Dota 2\"*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Complex != Better*", nPenalty);
 			}
+
+			else {		
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}
+
+		}
+		
+		else if (cChoice == '4') {
+			printf("Team ProgCC: Dota 2 is better, and LoL players can't deny.");
+			sleep(1);
+			newLine(2);
 			
-			else if (cChoice == '4') {
-				printf("Team ProgCC: Dota 2 is better, and LoL players can't deny.");
-				sleep(1);
-				newLine(2);
+			if (nRepetitionStatus == 0){		
 				printf("*Team ProgCC gets %d Argument Points for the Memes*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Overused Joke*", nPenalty);
 			}
-			
-			newLine(2);
-			
+
+			else {		
+				printf("*Team ProgCC gets 0 Argument Points for Repetition*");
+			}
+
 		}
-		else {
-			sleep(1);
-			printf("*Team ProgCC gets 0 Argument Points for Repetition*");
-			newLine(2);
-		}	
+		
+		newLine(2);
+	
 	}
 	sleep(1);	
 }
@@ -980,7 +1048,7 @@ int main() {
 					//varDebug(nPlayerTotalScore, nPlayerScoreRoundOne, nPlayerScoreRoundTwo, nPlayerScoreRoundThree, nBotTotalScore, nBotScoreRoundOne, nBotScoreRoundTwo, nBotScoreRoundThree, nFirstChoiceCount, nSecondChoiceCount, nThirdChoiceCount, nFourthChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
 				}
 				
-				sleep(2);
+				sleep(1);
 				/*------------------------------------------------------POST-DEBATE------------------------------------------------------*/
 				clrScreen();
 				displayDebateSummary(nDebateNum, nPlayerTotalScore, nPlayerScoreRoundOne,nPlayerScoreRoundTwo, nPlayerScoreRoundThree, nBotTotalScore, nBotScoreRoundOne, nBotScoreRoundTwo, nBotScoreRoundThree, nFirstChoiceCount, nSecondChoiceCount, nThirdChoiceCount, nFourthChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
