@@ -35,19 +35,19 @@ void displayDebateDetails (int nDebateNum){
 	switch (nDebateNum){
 		
 		case 1:	printf("		- The First Debate -\n");
-				printf("Topic			: Homework should be banned\n");
+				printf("Topic			: Homework should be banned.\n");
 				printf("Affirmative team	: Team ProgCC\n");
 				printf("Opposing team		: Team Bot Annie Cal\n");
 				break;
 		
 		case 2: printf("		- The Second Debate -\n");
-				printf("Topic			: 222222\n");
+				printf("Topic			: We should work towards colonizing Mars.\n");
 				printf("Affirmative team	: Team ProgCC\n");
 				printf("Opposing team		: Team Bot Annie Cal\n");
 				break;
 		
 		case 3: printf("		- The Third Debate -\n");
-				printf("Topic			: 3333333\n");
+				printf("Topic			: Dota 2 is better than League of Legends\n");
 				printf("Affirmative team	: Team ProgCC\n");
 				printf("Opposing team		: Team Bot Annie Cal\n");
 				break;
@@ -78,6 +78,18 @@ void displayArgChoices (int nDebateNum, int nRound) {
 				printf (" [2] Years of data show that homework is an effective way of supplementing discussions.\n");
 				printf (" [3] I don't know about you, but our forefathers would be mad if we ban homeworks.\n");
 				printf (" [4] Homeworks are like the peanut to a peanut butter jelly sandwich!\n");
+				break;
+		case 2:
+				printf (" [1] A mass extinction event on Earth may naturally occur sooner or later.\n");
+				printf (" [2] We will be able to get more resources from Mars.\n");
+				printf (" [3] It may help us understand our own planet more.\n");
+				printf (" [4] We can fulfill our destiny to explore the great unknown!\n");
+				break;
+		case 3:
+				printf (" [1] All the heroes in Dota 2 are unlocked from the start.\n");
+				printf (" [2] The biggest Dota 2 tournament has the largest prize pool in esports history.\n");
+				printf (" [3] Dota 2 is a much more complex game.\n");
+				printf (" [4] Dota 2 is better, and LoL players can't deny.\n");
 				break;
 	}
 	
@@ -110,26 +122,32 @@ void playerScoreSummary (int nDebateNum, int nRepetitionStatus, int nChoice, int
 			if (nChoice == 1) {
 				printf("Team ProgCC: Homework is necessary because it reinforces what students learn in the classroom.\n\n");
 				//sleep (2);
-				printf("*Team ProgCC gets %d Argument Points for Assertiveness*\n\n", nScoreAdded); 			
+				printf("*Team ProgCC gets %d Argument Points for Assertiveness*", nScoreAdded); 			
 			}															
 			
 			else if (nChoice == 2) {
 				printf("Team ProgCC: Years of data show that homework is an effective way of supplementing discussions.\n\n");
 				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for Use of Statistics*\n", nScoreAdded);
+				printf("*Team ProgCC gets -%d Argument Points for Possible Selection Bias*", nPenalty);
 			}
 			
 			else if (nChoice == 3) {
 				printf("Team ProgCC: I don't know about you, but our forefathers would be mad if we ban homeworks.\n\n");
 				//sleep (2);
-				printf("*Team ProgCC gets %d Argument Points for History*", nScoreAdded);
-				printf("Team ProgCC gets -%d Argument Points for Ad Hominem*\n\n", nPenalty);
+				printf("*Team ProgCC gets %d Argument Points for History*\n", nScoreAdded);
+				printf("*Team ProgCC gets -%d Argument Points for Ad Hominem*", nPenalty);
 				
 			}
 			
 			else if (nChoice == 4) {
 				printf("Team ProgCC: Homeworks are like the peanut to a peanut butter jelly sandwich!\n\n");
 				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for Analogy*\n", nScoreAdded);
+				printf("*Team ProgCC gets -%d Argument Points for Baseless Argument*", nPenalty);
 			}
+			
+			printf("\n\n"); 
 			
 		}
 		
@@ -143,20 +161,33 @@ void playerScoreSummary (int nDebateNum, int nRepetitionStatus, int nChoice, int
 		if (nRepetitionStatus == 0) {
 			
 			if (nChoice == 1) {
-				
+				printf("Team ProgCC: A mass extinction event on Earth may naturally occur sooner or later.\n\n");
+				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for Realism*", nScoreAdded);
 			}
 			
 			else if (nChoice == 2) {
-				
+				printf("Team ProgCC: We may be able to get more resources from Mars.\n\n");
+				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for Resourcefulness*\n", nScoreAdded);
+				printf("*Team ProgCC gets -%d Argument Points for Slight Greed*", nPenalty);
 			}
 			
 			else if (nChoice == 3) {
-				
+				printf("Team ProgCC: It may help us understand our own planet more.\n\n");
+				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for Concern for Earth*\n", nScoreAdded);
+				printf("*Team ProgCC gets -%d Argument Points for Not Specific*", nPenalty);
 			}
 			
 			else if (nChoice == 4) {
-				
+				printf("Team ProgCC: We can fulfill our destiny to explore the great unknown!\n\n");
+				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for Concern for Fatalism*\n", nScoreAdded);
+				printf("*Team ProgCC gets -%d Argument Points for Vagueness*", nPenalty);
 			}
+			
+			printf("\n\n"); 
 			
 		}
 		else {
@@ -168,20 +199,33 @@ void playerScoreSummary (int nDebateNum, int nRepetitionStatus, int nChoice, int
 		if (nRepetitionStatus == 0) {
 			
 			if (nChoice == 1) {
-				
+				printf("Team ProgCC: All the heroes in Dota 2 are unlocked from the start.\n\n");
+				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for Freedom of Choice*\n", nScoreAdded);
 			}
 			
 			else if (nChoice == 2) {
-				
+				printf("Team ProgCC: The biggest Dota 2 tournament has the largest prize pool in esports history.\n\n");
+				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for Prize Pool Flex*\n", nScoreAdded);
+				printf("*Team ProgCC gets -%d Argument Points for Bravado*", nPenalty);
 			}
 			
 			else if (nChoice == 3) {
-				
+				printf("Team ProgCC: Dota 2 is a much more complex game.\n\n");
+				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for \"To be fair, you have to have a very high IQ to understand Dota 2\"*\n", nScoreAdded);
+				printf("*Team ProgCC gets -%d Argument Points for Complex != Better*", nPenalty);
 			}
 			
 			else if (nChoice == 4) {
-				
+				printf("Team ProgCC: Dota 2 is better, and LoL players can’t deny.\n\n");
+				//sleep (2);
+				printf("*Team ProgCC gets %d Argument Points for the Memes*\n", nScoreAdded);
+				printf("*Team ProgCC gets -%d Argument Points for Overused Joke*", nPenalty);
 			}
+			
+			printf("\n\n"); 
 			
 		}
 		else {
@@ -367,7 +411,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 		}
 	}
 	
-	/*else if (nDebateNum == 2) {
+	else if (nDebateNum == 2) {
 		if (nRound == 1) {
 			nScoreAdded = 3;
 			nPenalty = 0;
@@ -517,7 +561,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Compelling Argument*\n", nScoreAdded);
 		}
-	}*/
+	}
 	
 	sleep (1);
 }
