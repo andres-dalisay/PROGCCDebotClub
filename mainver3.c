@@ -2,8 +2,12 @@
 	Description:		This program is a debate-style
 						game where the user selects various arguments
 						to get a higher score than the opposition bot team.
-	Last Modified:
+	Last Modified:		SEPT-27-2020
+	
+	Known Bugs:			- Entering two characters in prompts may result in input buffer issues, causing succeeding prompts to not work properly.
 */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -91,6 +95,9 @@ displayDebateDetails (int nDebateNum){
 				break;
 				
 	}
+	
+	sleep(1);
+	
 }
 
 /*	Displays the round number.
@@ -100,6 +107,7 @@ void
 displayRoundNumber(int nRound) {
 	printf	("		- Round %d -", nRound);
 	newLine(2);
+	sleep(1);
 }
 
 /*	Displays argument choices based on debate number. Also displays "Opening statement" or "Your response" based on round number.
@@ -162,6 +170,7 @@ playerSelectStatement () {
 	}
 	newLine(1);
 	
+	
 	return nChoice;
 }
 
@@ -173,18 +182,20 @@ playerSelectStatement () {
 	@param	(int)	nPenalty is the number of points deducted from the player's score
 */
 void
-playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nScoreAdded, int nPenalty) {
+playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nScoreAdded, int nPenalty) {
 	
 	if (nDebateNum == 1) {
 		if (nRepetitionStatus == 0){
 			if (nChoice == '1') {
 				printf("Team ProgCC: Homework is necessary because it reinforces what students learn in the classroom.");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Assertiveness*", nScoreAdded); 			
 			}															
 			
 			else if (nChoice == '2') {
 				printf("Team ProgCC: Years of data show that homework is an effective way of supplementing discussions.");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Use of Statistics*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Possible Selection Bias*", nPenalty);
@@ -192,6 +203,7 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 			
 			else if (nChoice == '3') {
 				printf("Team ProgCC: I don't know about you, but our forefathers would be mad if we ban homeworks.");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for History*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Ad Hominem*", nPenalty);
@@ -200,6 +212,7 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 			
 			else if (nChoice == '4') {
 				printf("Team ProgCC: Homeworks are like the peanut to a peanut butter jelly sandwich!");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Analogy*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Baseless Argument*", nPenalty);
@@ -210,6 +223,7 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 		}
 		
 		else {
+			sleep(1);
 			printf("*Team ProgCC gets 0 Argument Points for Repetition*");
 			newLine(2);
 		}	
@@ -220,12 +234,14 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 			
 			if (nChoice == '1') {
 				printf("Team ProgCC: A mass extinction event on Earth may naturally occur sooner or later.");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Realism*", nScoreAdded);
 			}
 			
 			else if (nChoice == '2') {
 				printf("Team ProgCC: We may be able to get more resources from Mars.");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Resourcefulness*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Slight Greed*", nPenalty);
@@ -233,6 +249,7 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 			
 			else if (nChoice == '3') {
 				printf("Team ProgCC: It may help us understand our own planet more.");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Concern for Earth*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Not Specific*", nPenalty);
@@ -240,6 +257,7 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 			
 			else if (nChoice == '4') {
 				printf("Team ProgCC: We can fulfill our destiny to explore the great unknown!");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Concern for Fatalism*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Vagueness*", nPenalty);
@@ -249,6 +267,7 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 			
 		}
 		else {
+			sleep(1);
 			printf("*Team ProgCC gets 0 Argument Points for Repetition*");
 			newLine(2);
 		}	
@@ -259,12 +278,14 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 			
 			if (nChoice == '1') {
 				printf("Team ProgCC: All the heroes in Dota 2 are unlocked from the start.");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Freedom of Choice*\n", nScoreAdded);
 			}
 			
 			else if (nChoice == '2') {
 				printf("Team ProgCC: The biggest Dota 2 tournament has the largest prize pool in esports history.");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Prize Pool Flex*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Bravado*", nPenalty);
@@ -272,13 +293,15 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 			
 			else if (nChoice == '3') {
 				printf("Team ProgCC: Dota 2 is a much more complex game.");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for \"To be fair, you have to have a very high IQ to understand Dota 2\"*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Complex != Better*", nPenalty);
 			}
 			
 			else if (nChoice == '4') {
-				printf("Team ProgCC: Dota 2 is better, and LoL players can’t deny.");
+				printf("Team ProgCC: Dota 2 is better, and LoL players can't deny.");
+				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for the Memes*\n", nScoreAdded);
 				printf("*Team ProgCC gets -%d Argument Points for Overused Joke*", nPenalty);
@@ -288,11 +311,12 @@ playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nSc
 			
 		}
 		else {
+			sleep(1);
 			printf("*Team ProgCC gets 0 Argument Points for Repetition*");
 			newLine(2);
 		}	
 	}
-			
+	sleep(1);	
 }
 
 /*	Computes for the player's score
@@ -429,7 +453,7 @@ playerAddScore (int nDebateNum, int nRound, char cChoice, int *nPlayerTotalScore
 		}
 	}
 	
-	playerScoreSummary(nDebateNum, nRepetition, cChoice, nScoreAdded, nPenalty);
+	playerRoundScoreSummary(nDebateNum, nRepetition, cChoice, nScoreAdded, nPenalty);
 	
 }
 
@@ -458,6 +482,7 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			printf("Team Bot Annie Cal responds with: It is a well-known fact that homework provides\n");
 			printf("additional unnecessary cognitive load for students!");
 			newLine(2);
+			sleep(1);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nScoreAdded);
 			printf("*Team Bot Annie Cal gets -%d Argument Points for Not Citing Sources*", nPenalty);
@@ -476,6 +501,7 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			printf("Team Bot Annie Cal responds with: There are better ways to asses learning other than\n");
 			printf("homeworks!");
 			newLine(2);
+			sleep(1);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nScoreAdded);
 			printf("*Team Bot Annie Cal gets -%d Argument Points for No Evidence*", nPenalty);
@@ -494,6 +520,7 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			printf("Team Bot Annie Cal responds with: Learning also happens on weekends despite homework,\n");
 			printf("when students get to reflect on class discussions.");
 			newLine(2);
+			sleep(1);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Compelling Argument*", nScoreAdded);
 			newLine(2);
@@ -510,8 +537,9 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("Shifting our focus to Mars may lead to neglect towards sustaining Earth.");
+			printf("Team Bot Annie Cal responds with: Shifting our focus to Mars may lead to neglect towards sustaining Earth.");
 			newLine(2);
+			sleep(1);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Environmentalism*", nScoreAdded);
 			newLine(2);
@@ -526,8 +554,9 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("We may risk contaminating the Martian environment.");
+			printf("Team Bot Annie Cal responds with: We may risk contaminating the Martian environment.");
 			newLine(2);
+			sleep(1);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Contamination-Conscious*", nScoreAdded);
 			newLine(2);
@@ -542,8 +571,9 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("All that we need is on Earth.");
+			printf("Team Bot Annie Cal responds with: All that we need is on Earth.");
 			newLine(2);
+			sleep(1);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Contentedness*\n", nScoreAdded);
 			printf("*Team Bot Annie Cal gets -%d Argument Points for Denial of Current Issues*", nPenalty);
@@ -561,8 +591,9 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("League of Legends has a bigger playerbase.");
+			printf("Team Bot Annie Cal responds with: League of Legends has a bigger playerbase.");
 			newLine(2);
+			sleep(1);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Healthy Playerbase*", nScoreAdded);
 			newLine(2);
@@ -577,8 +608,9 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("League of Legends doesn’t have a very steep learning curve to play.");
+			printf("Team Bot Annie Cal responds with: League of Legends doesn't have a very steep learning curve to play.");
 			newLine(2);
+			sleep(1);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Accessibility*", nScoreAdded);
 			newLine(2);
@@ -593,14 +625,15 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("League of Legends is better promoted with short animated movies and original songs.");
+			printf("Team Bot Annie Cal responds with: League of Legends is better promoted with short animated movies and original songs.");
 			newLine(2);
+			sleep(1);
 			
 			printf("*Team Bot Annie Cal gets %d Argument Points for Creativity*", nScoreAdded);
 			newLine(2);
 		}
 	}
-	
+	sleep(1);
 }
 
 /*	Used mainly for nRoundXChoice variables to convert from nChoice ASCII value to proper integer.
@@ -893,7 +926,7 @@ int main() {
 	if (nStartGameState == 1){					// Proceed with game if nStartGameState == 1.
 		printf("The game will now start!");		// If user decides to quit at the start of the program,
 												// nStartGameState == 0 and the program exits.
-		sleep(2);
+		sleep(1);
 		clrScreen();
 		
 			/*------------------------------------------------------DEBATE PROPER------------------------------------------------------*/
