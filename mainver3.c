@@ -611,12 +611,57 @@ void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScor
 	//clrScreen();
 }
 
-int main() {
-	
-	char cSelect = ' ';					// User prompt for starting the game
+int continueGame (int nDebateNum){
+	char cSelect = ' ';
 	char cTemp;
+	int nContinueState;
 	
-	int nStartGame = 0;
+	if (nDebateNum == 1) {
+		
+		while (!(cSelect == 'y' || cSelect == 'Y' || cSelect == 'n' || cSelect == 'N')){
+			printf ("Would you like to start the second debate? <Y/N>: ");
+			scanf  ("%c%c", &cSelect, &cTemp);
+			
+			if (!(cSelect == 'y' || cSelect == 'Y' || cSelect == 'n' || cSelect == 'N')){
+				printf("%c is not a valid response!\n\n", cSelect);
+			}	
+		}
+		
+		if (cSelect == 'n' || cSelect == 'N') {
+			printf("The game will now exit. Thank you for playing!");
+			nContinueState = 0;
+		}
+		if (cSelect == 'y' || cSelect == 'Y'){
+			nContinueState = 1;
+		}
+	}
+	
+	else if (nDebateNum == 2) {
+		
+		while (!(cSelect == 'y' || cSelect == 'Y' || cSelect == 'n' || cSelect == 'N')){
+			printf ("Would you like to start the third debate? <Y/N>: ");
+			scanf  ("%c%c", &cSelect, &cTemp);
+			
+			if (!(cSelect == 'y' || cSelect == 'Y' || cSelect == 'n' || cSelect == 'N')){
+				printf("%c is not a valid response!\n\n", cSelect);
+			}	
+		}
+		
+		if (cSelect == 'n' || cSelect == 'N') {
+			printf("The game will now exit. Thank you for playing!");
+			nContinueState = 0;
+		}
+		if (cSelect == 'y' || cSelect == 'Y'){
+			nContinueState = 1;
+		}
+	}
+	
+	return nContinueState;
+}
+
+int main() {
+/*------------------------------------------------------VARIABLE DECLARATIONS------------------------------------------------------*/	
+	int nStartGame;
 	
 	int nDebateNum;						// Refers to debate number, e.g. 'First Debate', 'Second Debate', 'Third Debate'
 	
@@ -637,12 +682,12 @@ int main() {
 	int n3rdChoiceCount;
 	int n4thChoiceCount;
 	
-	int nBotTotalScore;					// Bot score
-	int nBotScoreRound1 	= 0;		// Bot score for individual rounds
-	int nBotScoreRound2 	= 0;
-	int nBotScoreRound3 	= 0;
+	int nBotTotalScore;					// Total bot score for each debate
+	int nBotScoreRound1;				// Bot scores for individual rounds
+	int nBotScoreRound2;
+	int nBotScoreRound3;
 	
-	
+/*------------------------------------------------------GAME PROPER------------------------------------------------------*/
 	
 	nStartGame = startGame();
 	
@@ -651,68 +696,59 @@ int main() {
 		sleep(1);
 		clrScreen();
 		
-		for (nDebateNum = 1; nDebateNum <= 3; nDebateNum += 1) {
-		
-			// Pre-game reset settings
-			nPlayerTotalScore 	= 0;
-			nPlayerScoreRound1 	= 0;	
-			nPlayerScoreRound2 	= 0;
-			nPlayerScoreRound3 	= 0;
+			/*------------------------------------------------------DEBATE PROPER------------------------------------------------------*/
+			for (nDebateNum = 1; nDebateNum <= 3 && nStartGame == 1; nDebateNum += 1) {
 			
-			nRoundOneChoice 	= 0;
-			nRoundTwoChoice 	= 0;
-			nRoundThreeChoice 	= 0;
-			
-			n1stChoiceCount 	= 0;			
-			n2ndChoiceCount 	= 0;			
-			n3rdChoiceCount 	= 0;
-			n4thChoiceCount 	= 0;
-			
-			n1stChoiceCount 	= 0;				
-			n2ndChoiceCount 	= 0;				
-			n3rdChoiceCount 	= 0;
-			n4thChoiceCount 	= 0;
-			
-			
-			nBotTotalScore 		= 0;
-			nBotScoreRound1 	= 0;	
-			nBotScoreRound2 	= 0;
-			nBotScoreRound3 	= 0;
-			
-			
-			displayDebateDetails(nDebateNum);
-			
-			for(nRound = 1; nRound <= 3; nRound += 1){
-					
-				displayRoundNumber(nRound);			
-				displayArgChoices(nDebateNum, nRound);
-				nPlayerChoice = playerSelectStatement();
-				playerAddScore(nDebateNum, nRound, nPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3, &n1stChoiceCount, &n2ndChoiceCount, &n3rdChoiceCount, &n4thChoiceCount, &nRoundOneChoice, &nRoundTwoChoice, &nRoundThreeChoice);
-				botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRound1, &nBotScoreRound2, &nBotScoreRound3);
-				//varDebug(nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
-			}
-			
-			displayDebateSummary(nDebateNum, nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
-			
-			if (nDebateNum == 1) {
-				printf ("Would you like to start the second debate? <Y/N>: ");
-				scanf  ("%c%c", &cSelect, &cTemp);
+				/*------------------------------------------------------PRE-DEBATE RESET SETTINGS------------------------------------------------------*/
+				nPlayerTotalScore 	= 0;
+				nPlayerScoreRound1 	= 0;	
+				nPlayerScoreRound2 	= 0;
+				nPlayerScoreRound3 	= 0;
 				
-				if (cSelect == )
+				nRoundOneChoice 	= 0;
+				nRoundTwoChoice 	= 0;
+				nRoundThreeChoice 	= 0;
+				
+				n1stChoiceCount 	= 0;			
+				n2ndChoiceCount 	= 0;			
+				n3rdChoiceCount 	= 0;
+				n4thChoiceCount 	= 0;
+				
+				n1stChoiceCount 	= 0;				
+				n2ndChoiceCount 	= 0;				
+				n3rdChoiceCount 	= 0;
+				n4thChoiceCount 	= 0;
+				
+				
+				nBotTotalScore 		= 0;
+				nBotScoreRound1 	= 0;	
+				nBotScoreRound2 	= 0;
+				nBotScoreRound3 	= 0;
+				
+				displayDebateDetails(nDebateNum);
+				
+				/*------------------------------------------------------ROUND PROPER------------------------------------------------------*/
+				for(nRound = 1; nRound <= 3; nRound += 1){	
+					displayRoundNumber(nRound);			
+					displayArgChoices(nDebateNum, nRound);
+					nPlayerChoice = playerSelectStatement();
+					playerAddScore(nDebateNum, nRound, nPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3, &n1stChoiceCount, &n2ndChoiceCount, &n3rdChoiceCount, &n4thChoiceCount, &nRoundOneChoice, &nRoundTwoChoice, &nRoundThreeChoice);
+					botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRound1, &nBotScoreRound2, &nBotScoreRound3);
+					varDebug(nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
+				}
+				
+				/*------------------------------------------------------POST-DEBATE------------------------------------------------------*/
+				displayDebateSummary(nDebateNum, nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
+				
+				if (nDebateNum == 1 || nDebateNum == 2){
+					nStartGame = continueGame(nDebateNum);
+				}
+				
+				else {
+					printf("Thank you for playing!");
+					nStartGame = 0;
+				}
 			}
-			else if (nDebateNum == 2) {
-				printf ("Would you like to start the third debate? <Y/N>: ");
-				scanf  ("%c%c", &cSelect, &cTemp);
-			}
-			else {
-				printf ("Thank you for playing!");
-			}
-			
-			cSelect = ' ';						//Resets cSelect for later select prompts
-			
-		}
-	
-		
 	}
 	
 	else {
