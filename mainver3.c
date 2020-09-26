@@ -144,16 +144,16 @@ displayArgChoices (int nDebateNum, int nRound) {
 */
 char
 playerSelectStatement () {
-	char nChoice = ' ';
-	char cTemp;
+	int nChoice = 0;
+	//char cTemp;
 	
-	while(!(nChoice == '1' || nChoice == '2' || nChoice == '3' || nChoice == '4')) {				// As of now, inputting a negative sign (-) with
+	while(!(nChoice == 1 || nChoice == 2 || nChoice == 3 || nChoice == 4)) {				// As of now, inputting a negative sign (-) with
 																									// a valid choice (1, 2, 3, 4) is accepted because
 		printf("Your choice: ");																	// nChoice is a char, not an int. Not sure how to fix.
-		scanf("%c%c", &nChoice, &cTemp);
+		scanf("%d", &nChoice);
 		
-		if (!(nChoice == '1' || nChoice == '2' || nChoice == '3' || nChoice == '4')){
-			printf("%c is not a valid choice, please input either 1, 2, 3, or 4.", nChoice);		
+		if (!(nChoice == 1 || nChoice == 2 || nChoice == 3 || nChoice == 4)){
+			printf("%d is not a valid choice, please input either 1, 2, 3, or 4.", nChoice);		
 			newLine(2);
 		}
 		
