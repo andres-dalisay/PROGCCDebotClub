@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-/*	Prints newlines based on nLines parameter.
+/*	Prints newlines based on amount specified in the nLines parameter.
 	@param	(int)	nLines is the number of newlines desired
 */
 void
@@ -28,7 +28,7 @@ clrScreen() {
 }
 
 /*	Asks user for Y/N input to start the game at the beginning of the program.
-	@return (int) 1 to continue game, 0 to exit and stop the program.
+	@return (int) 1 to continue game, 0 to exit and stop the program
 */
 int 
 startGame() {
@@ -64,7 +64,7 @@ startGame() {
 }
 
 /*	Displays the debate number, topic, affirmative team, and opposing team.
-	@param 	(int) 	nDebateNum is the current debate iteration
+	@param 	(int) 	nDebateNum is the current debate iteration.
 */
 void
 displayDebateDetails (int nDebateNum){
@@ -99,7 +99,7 @@ displayDebateDetails (int nDebateNum){
 }
 
 /*	Displays the round number.
-	@param	(int)	nRound is the current round number
+	@param	(int)	nRound is the current round number.
 */
 void
 displayRoundNumber(int nRound) {
@@ -108,9 +108,9 @@ displayRoundNumber(int nRound) {
 	sleep(1);
 }
 
-/*	Displays argument choices based on debate number. Also displays "Opening statement" or "Your response" based on round number.
-	@param	(int)	nDebateNum is the current debate iteration
-	@param	(int)	nRound is the current round number
+/*	Displays argument choices based on respective debate number.
+	@param	(int)	nDebateNum is the current debate iteration.
+	@param	(int)	nRound is the current round number.
 */
 void
 displayArgChoices (int nDebateNum, int nRound) {
@@ -145,8 +145,8 @@ displayArgChoices (int nDebateNum, int nRound) {
 	newLine(2);
 }
 
-/*	Asks user to input 1, 2, 3, or 4 to choose argument.
-	@return	(char)	choice inputted by user
+/*	Asks user to input 1, 2, 3, or 4 to choose an argument.
+	@return	(char)	choice inputted by the player
 */
 char
 playerSelectStatement () {
@@ -172,12 +172,12 @@ playerSelectStatement () {
 	return cChoice;
 }
 
-/*	Displays text based on player choice, as well as +/- points with "justifications"
-	@param	(int)	nDebateNum is the current debate iteration
-	@param	(int)	nRepetitionStatus is 0 for no repetition, and 1 for repetition
-	@param	(char)	cChoice is the choice selected by the user (1, 2, 3, or 4)
-	@param	(int)	nScoreAdded is the number of points added to the player's score
-	@param	(int)	nPenalty is the number of points deducted from the player's score
+/*	Displays the player's argument choice, as well as additions and deductions to points with "justifications."
+	@param	(int)	nDebateNum is the current debate iteration.
+	@param	(int)	nRepetitionStatus is 0 for no repetition of choice, and 1 when a choice is repeated.
+	@param	(char)	cChoice is the choice selected by the user (1, 2, 3, or 4).
+	@param	(int)	nScoreAdded is the number of points added to the player's score.
+	@param	(int)	nPenalty is the number of points deducted from the player's score.
 */
 void
 playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char cChoice, int nScoreAdded, int nPenalty) {
@@ -317,11 +317,11 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char cChoice, in
 	sleep(1);	
 }
 
-/*	Computes for the player's score
-	@param (int)	nDebateNum is the current debate iteration
-	@param (int)	nRound is the current round number
-	@param (int)	cChoice is the choice selected by the user (1, 2, 3, or 4)
-	@param (int*)	nPlayerTotalScore is the current total score of the player
+/*	Computes for the player's score for each round and keeps track of the choices chosen each round as well as how many times it was used in the debate.
+	@param (int)	nDebateNum is the current debate iteration.
+	@param (int)	nRound is the current round number.
+	@param (int)	cChoice is the choice selected by the user (1, 2, 3, or 4).
+	@param (int*)	nPlayerTotalScore is the current total score of the player.
 	@param (int*)	nPlayerScoreRoundOne is the number of points obtained by the player in round one.
 	@param (int*)	nPlayerScoreRoundTwo is the number of points obtained by the player in round two.
 	@param (int*)	nPlayerScoreRoundThree is the number of points obtained by the player in round three.
@@ -457,9 +457,9 @@ playerAddScore (int nDebateNum, int nRound, char cChoice, int *nPlayerTotalScore
 }
 
 /*	Computes for the bot's score each round and displays their choices and points added and deducted.
-	@param	(int)	nDebateNum is the current debate iteration
-	@param	(int)	nRound is the current round number
-	@param	(int*)	nBotTotalScore is the current total score of the bot
+	@param	(int)	nDebateNum is the current debate iteration.
+	@param	(int)	nRound is the current round number.
+	@param	(int*)	nBotTotalScore is the current total score of the bot.
 	@param	(int*)	nBotScoreRoundOne is the number of points obtained by the bot in round one.
 	@param	(int*)	nBotScoreRoundTwo is the number of points obtained by the bot in round two.
 	@param	(int*)	nBotScoreRoundThree is the number of points obtained by the bot in round three.
@@ -684,11 +684,11 @@ convertASCIIValueToInt (int *nRoundOneChoice, int *nRoundTwoChoice, int *nRoundT
 }
 
 /*	Used to trace certain variables in-between debate rounds for debug purposes.
-	@param 	(int)	nPlayerTotalScore is the current total score of the player
+	@param 	(int)	nPlayerTotalScore is the current total score of the player.
 	@param 	(int)	nPlayerScoreRoundOne is the number of points obtained by the player in round one.
 	@param 	(int)	nPlayerScoreRoundTwo is the number of points obtained by the player in round two.
 	@param	(int)	nPlayerScoreRoundThree is the number of points obtained by the player in round three.
-	@param	(int*)	nBotTotalScore is the current total score of the bot
+	@param	(int*)	nBotTotalScore is the current total score of the bot.
 	@param	(int*)	nBotScoreRoundOne is the number of points obtained by the bot in round one.
 	@param	(int*)	nBotScoreRoundTwo is the number of points obtained by the bot in round two.
 	@param	(int*)	nBotScoreRoundThree is the number of points obtained by the bot in round three.
@@ -767,12 +767,12 @@ checkBonuses (int nFirstChoiceCount, int nSecondChoiceCount, int nThirdChoiceCou
 }
 
 /*	Displays the point summary of the debate.
-	@param	(int)	nDebateNum is the current debate iteration
-	@param 	(int)	nPlayerTotalScore is the current total score of the player
+	@param	(int)	nDebateNum is the current debate iteration.
+	@param 	(int)	nPlayerTotalScore is the current total score of the player.
 	@param 	(int)	nPlayerScoreRoundOne is the number of points obtained by the player in round one.
 	@param 	(int)	nPlayerScoreRoundTwo is the number of points obtained by the player in round two.
 	@param	(int)	nPlayerScoreRoundThree is the number of points obtained by the player in round three.
-	@param	(int)	nBotTotalScore is the current total score of the bot
+	@param	(int)	nBotTotalScore is the current total score of the bot.
 	@param	(int)	nBotScoreRoundOne is the number of points obtained by the bot in round one.
 	@param	(int)	nBotScoreRoundTwo is the number of points obtained by the bot in round two.
 	@param	(int)	nBotScoreRoundThree is the number of points obtained by the bot in round three.
@@ -836,8 +836,8 @@ void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScor
 }
 
 /*	Asks user for Y/N input to continue to the next debate after the end of the first or second debate.
-	@param	(int)	nDebateNum is the current debate iteration
-	@return	(int)	1 to continue game, 0 to exit and stop the program.
+	@param	(int)	nDebateNum is the current debate iteration.
+	@return	(int)	value of 1 to continue game, 0 to exit and stop the program
 */
 int continueGame (int nDebateNum){
 	char cSelect = ' ';
