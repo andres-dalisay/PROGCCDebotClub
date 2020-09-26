@@ -661,20 +661,20 @@ int continueGame (int nDebateNum){
 
 int main() {
 /*------------------------------------------------------VARIABLE DECLARATIONS------------------------------------------------------*/	
-	int nStartGame;
+	int nStartGameState;				// A value of 1 means the game continues, while a value of 0 means the game stops and the program ends.
 	
 	int nDebateNum;						// Refers to debate number, e.g. 'First Debate', 'Second Debate', 'Third Debate'
 	
 	int nRound;							// Round number
-	char nPlayerChoice;					// Argument choice selected by player. Set to char datatype as int will cause problems in input validation when chars/strings are inputted, causing an infinite loop.
+	char cPlayerChoice;					// Argument choice selected by player. Set to char datatype as int will cause problems in input validation when chars/strings are inputted, causing an infinite loop.
 	
 	int nPlayerTotalScore;				// Player score
 	int nPlayerScoreRound1;				// Player score for individual rounds
 	int nPlayerScoreRound2;
 	int nPlayerScoreRound3;
 	
-	int nRoundOneChoice;
-	int nRoundTwoChoice;
+	int nRoundOneChoice;				// Takes choices from cPlayerChoice in each round. Converts character value of cPlayerChoice to an integer ASCII value.
+	int nRoundTwoChoice;				// Used in checkBonuses() function
 	int nRoundThreeChoice;
 	
 	int n1stChoiceCount;				// Counters to determine if repititions happen
@@ -689,15 +689,15 @@ int main() {
 	
 /*------------------------------------------------------GAME PROPER------------------------------------------------------*/
 	
-	nStartGame = startGame();
+	nStartGameState = startGame();
 	
-	if (nStartGame == 1){
+	if (nStartGameState == 1){
 		printf("The game will now start!");
 		sleep(1);
 		clrScreen();
 		
 			/*------------------------------------------------------DEBATE PROPER------------------------------------------------------*/
-			for (nDebateNum = 1; nDebateNum <= 3 && nStartGame == 1; nDebateNum += 1) {
+			for (nDebateNum = 1; nDebateNum <= 3 && nStartGameState == 1; nDebateNum += 1) {
 			
 				/*------------------------------------------------------PRE-DEBATE RESET SETTINGS------------------------------------------------------*/
 				nPlayerTotalScore 	= 0;
@@ -731,8 +731,8 @@ int main() {
 				for(nRound = 1; nRound <= 3; nRound += 1){	
 					displayRoundNumber(nRound);			
 					displayArgChoices(nDebateNum, nRound);
-					nPlayerChoice = playerSelectStatement();
-					playerAddScore(nDebateNum, nRound, nPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3, &n1stChoiceCount, &n2ndChoiceCount, &n3rdChoiceCount, &n4thChoiceCount, &nRoundOneChoice, &nRoundTwoChoice, &nRoundThreeChoice);
+					cPlayerChoice = playerSelectStatement();
+					playerAddScore(nDebateNum, nRound, cPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3, &n1stChoiceCount, &n2ndChoiceCount, &n3rdChoiceCount, &n4thChoiceCount, &nRoundOneChoice, &nRoundTwoChoice, &nRoundThreeChoice);
 					botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRound1, &nBotScoreRound2, &nBotScoreRound3);
 					varDebug(nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
 				}
@@ -741,12 +741,12 @@ int main() {
 				displayDebateSummary(nDebateNum, nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
 				
 				if (nDebateNum == 1 || nDebateNum == 2){
-					nStartGame = continueGame(nDebateNum);
+					nStartGameState = continueGame(nDebateNum);
 				}
 				
 				else {
 					printf("Thank you for playing!");
-					nStartGame = 0;
+					nStartGameState = 0;
 				}
 			}
 	}
