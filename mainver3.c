@@ -1,25 +1,51 @@
+/*	Programmed by:		Andres Dalisay	S12
+	Description:		This program is a debate-style
+						game where the user selects various arguments
+						to get a higher score than the opposition bot team.
+	Last Modified:
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
-void clrScreen () {
+/*	Prints newlines based on nLines parameter.
+	@param	(int)	nLines is the number of newlines desired
+*/
+void
+newLine(int nLines){
+	int i;
+	
+	for (i = 1; i <= nLines; i += 1){
+		printf("\n");
+	}
+}
+
+/* Clears the command line screen. */
+void
+clrScreen() {
 	system("cls");
 }
 
-int startGame () {
-	int cSelect = ' ';
-	int cTemp;
-	int nStartGame = 0;
+/*	Asks user for Y/N input to start the game at the beginning of the program.
+	@return (int) 1 to continue game, 0 to exit and stop the program.
+*/
+int 
+startGame() {
+	char cSelect = ' ';
+	char cTemp;
 	
-	printf("Welcome to PROGCC Debot Club!\n\n");
+	int nStartGame = 0;		
+	
+	printf("Welcome to PROGCC Debot Club!");
+	newLine(2);
 
-	
 	while (!(cSelect == 'y' || cSelect == 'Y' || cSelect == 'n' || cSelect == 'N')){
 		
 		printf("Would you like to start the game? <Y/N>: ");
 		scanf("%c%c", &cSelect, &cTemp);
 
-		if (!(cSelect == 'y' || cSelect == 'Y' || cSelect == 'n' || cSelect == 'N')){
-			printf("%c is not a valid response!\n\n", cSelect);
+		if (!(cSelect == 'y' || cSelect == 'Y' || cSelect == 'n' || cSelect == 'N')){		// Input validation
+			printf("%c is not a valid response!", cSelect);
+			newLine(2);
 		}
 		
 	}
@@ -35,83 +61,100 @@ int startGame () {
 	return nStartGame;
 }
 
-void displayDebateDetails (int nDebateNum){
+/*	Displays the debate number, topic, affirmative team, and opposing team.
+	@param 	(int) 	nDebateNum is the current debate iteration
+*/
+void
+displayDebateDetails (int nDebateNum){
 	
 	switch (nDebateNum){
 		
 		case 1:	printf("		- The First Debate -\n");
 				printf("Topic			: Homework should be banned.\n");
 				printf("Affirmative team	: Team ProgCC\n");
-				printf("Opposing team		: Team Bot Annie Cal\n");
+				printf("Opposing team		: Team Bot Annie Cal");
+				newLine(2);
 				break;
 		
 		case 2: printf("		- The Second Debate -\n");
 				printf("Topic			: We should work towards colonizing Mars.\n");
 				printf("Affirmative team	: Team ProgCC\n");
-				printf("Opposing team		: Team Bot Annie Cal\n");
+				printf("Opposing team		: Team Bot Annie Cal");
+				newLine(2);
 				break;
 		
 		case 3: printf("		- The Third Debate -\n");
 				printf("Topic			: Dota 2 is better than League of Legends\n");
 				printf("Affirmative team	: Team ProgCC\n");
-				printf("Opposing team		: Team Bot Annie Cal\n");
+				printf("Opposing team		: Team Bot Annie Cal");
+				newLine(2);
 				break;
 				
 	}
-	//sleep (2);
 }
 
-void displayRoundNumber(int nRound) {
-	printf	("\n");
+/*	Displays the round number.
+	@param	(int)	nRound is the current round number
+*/
+void
+displayRoundNumber(int nRound) {
 	printf	("		- Round %d -", nRound);
-	printf	("\n\n");
+	newLine(2);
 }
 
-void displayArgChoices (int nDebateNum, int nRound) {
+/*	Displays argument choices based on debate number. Also displays "Opening statement" or "Your response" based on round number.
+	@param	(int)	nDebateNum is the current debate iteration
+	@param	(int)	nRound is the current round number
+*/
+void
+displayArgChoices (int nDebateNum, int nRound) {
 	
 	if (nRound == 1) {
-		printf	("Opening Statement (Input either 1, 2, 3, or 4):\n");
+		printf("Opening statement (Input either 1, 2, 3, or 4):\n");
 	}
 	else {
-		printf	("Your response (Input either 1, 2, 3, or 4):\n");
+		printf("Your response (Input either 1, 2, 3, or 4):\n");
 	}
 	
 	switch (nDebateNum){
-		
 		case 1:	
-				printf (" [1] Homework is necessary because it reinforces what students learn in the classroom.\n");
-				printf (" [2] Years of data show that homework is an effective way of supplementing discussions.\n");
-				printf (" [3] I don't know about you, but our forefathers would be mad if we ban homeworks.\n");
-				printf (" [4] Homeworks are like the peanut to a peanut butter jelly sandwich!\n");
+				printf(" [1] Homework is necessary because it reinforces what students learn in the classroom.\n");
+				printf(" [2] Years of data show that homework is an effective way of supplementing discussions.\n");
+				printf(" [3] I don't know about you, but our forefathers would be mad if we ban homeworks.\n");
+				printf(" [4] Homeworks are like the peanut to a peanut butter jelly sandwich!");
 				break;
 		case 2:
-				printf (" [1] A mass extinction event on Earth may naturally occur sooner or later.\n");
-				printf (" [2] We will be able to get more resources from Mars.\n");
-				printf (" [3] It may help us understand our own planet more.\n");
-				printf (" [4] We can fulfill our destiny to explore the great unknown!\n");
+				printf(" [1] A mass extinction event on Earth may naturally occur sooner or later.\n");
+				printf(" [2] We will be able to get more resources from Mars.\n");
+				printf(" [3] It may help us understand our own planet more.\n");
+				printf(" [4] We can fulfill our destiny to explore the great unknown!");
 				break;
 		case 3:
-				printf (" [1] All the heroes in Dota 2 are unlocked from the start.\n");
-				printf (" [2] The biggest Dota 2 tournament has the largest prize pool in esports history.\n");
-				printf (" [3] Dota 2 is a much more complex game.\n");
-				printf (" [4] Dota 2 is better, and LoL players can't deny.\n");
+				printf(" [1] All the heroes in Dota 2 are unlocked from the start.\n");
+				printf(" [2] The biggest Dota 2 tournament has the largest prize pool in esports history.\n");
+				printf(" [3] Dota 2 is a much more complex game.\n");
+				printf(" [4] Dota 2 is better, and LoL players can't deny.");
 				break;
 	}
-	
-	printf ("\n");
+	newLine(2);
 }
 
-char playerSelectStatement () {
+/*	Asks user to input 1, 2, 3, or 4 to choose argument.
+	@return	(char)	choice inputted by user
+*/
+char
+playerSelectStatement () {
 	char nChoice = ' ';
 	char cTemp;
 	
-	while(!(nChoice == '1' || nChoice == '2' || nChoice == '3' || nChoice == '4')) {
-		
-		printf("Your choice: ");
+	while(!(nChoice == '1' || nChoice == '2' || nChoice == '3' || nChoice == '4')) {				// As of now, inputting a negative sign (-) with
+																									// a valid choice (1, 2, 3, 4) is accepted because
+		printf("Your choice: ");																	// nChoice is a char, not an int. Not sure how to fix.
 		scanf("%c%c", &nChoice, &cTemp);
 		
 		if (!(nChoice == '1' || nChoice == '2' || nChoice == '3' || nChoice == '4')){
-			printf("%c is not a valid choice, please input either 1, 2, 3, or 4.\n\n", nChoice);
+			printf("%c is not a valid choice, please input either 1, 2, 3, or 4.", nChoice);		
+			newLine(2);
 		}
 		
 	}
@@ -119,7 +162,15 @@ char playerSelectStatement () {
 	return nChoice;
 }
 
-void playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nScoreAdded, int nPenalty) {				// NOTES: needs to take into account debate number since answers are different
+/*	Displays text based on player choice, as well as +/- points with "justifications"
+	@param	(int)	nDebateNum is the current debate iteration
+	@param	(int)	nRepetitionStatus is 0 for no repetition, and 1 for repetition
+	@param	(char)	nChoice is the choice selected by the user (1, 2, 3, or 4)
+	@param	(int)	nScoreAdded is the number of points added to the player's score
+	@param	(int)	nPenalty is the number of points deducted from the player's score
+*/
+void
+playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nScoreAdded, int nPenalty) {
 	
 	if (nDebateNum == 1) {
 		if (nRepetitionStatus == 0){
@@ -239,128 +290,154 @@ void playerScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 			
 }
 
-void playerAddScore (int nDebateNum, int nRound, char nChoice, int *nPlayerTotalScore, int *nPlayerScoreRound1, int *nPlayerScoreRound2, int *nPlayerScoreRound3, int *n1stChoiceCount, int *n2ndChoiceCount, int *n3rdChoiceCount, int *n4thChoiceCount, int *nRoundOneChoice, int *nRoundTwoChoice, int *nRoundThreeChoice) {
+/*	Computes for the player's score
+	@param (int)	nDebateNum is the current debate iteration
+	@param (int)	nRound is the current round number
+	@param (int)	nChoice is the choice selected by the user (1, 2, 3, or 4)
+	@param (int*)	nPlayerTotalScore is the current total score of the player
+	@param (int*)	nPlayerScoreRoundOne is the number of points obtained by the player in round one.
+	@param (int*)	nPlayerScoreRoundTwo is the number of points obtained by the player in round two.
+	@param (int*)	nPlayerScoreRoundThree is the number of points obtained by the player in round three.
+	@param (int*)	nFirstChoiceCount is the number of times the player chose the first choice.
+	@param (int*)	nSecondChoiceCount is the number of times the player chose the second choice.
+	@param (int*)	nThirdChoiceCount is the number of times the player chose the third choice.
+	@param (int*)	nFourthChoiceCount is the number of times the player chose the fourth choice.
+	@param (int*)	nRoundOneChoice is the player's choice in round one of the debate.
+	@param (int*)	nRoundTwoChoice is the player's choice in round two of the debate.
+	@param (int*)	nRoundThreeChoice is the player's choice in round three of the debate.
+*/
+void
+playerAddScore (int nDebateNum, int nRound, char cChoice, int *nPlayerTotalScore, int *nPlayerScoreRoundOne, int *nPlayerScoreRoundTwo, int *nPlayerScoreRoundThree, int *nFirstChoiceCount, int *nSecondChoiceCount, int *nThirdChoiceCount, int *nFourthChoiceCount, int *nRoundOneChoice, int *nRoundTwoChoice, int *nRoundThreeChoice) {
 	
 	int nScoreAdded, nPenalty, nPlayerScoreRound;
 	int nRepetition = 0;
 	
-	if (nChoice == '1') {
-		if (*n1stChoiceCount == 0){
+	if (cChoice == '1') {
+		if (*nFirstChoiceCount == 0){
 			nScoreAdded = 3;
 			nPenalty = 0;
 			nPlayerScoreRound = nScoreAdded - nPenalty;
 			
 			if (nRound == 1) {
-				*nPlayerScoreRound1 = nPlayerScoreRound;
-				*nRoundOneChoice = nChoice;
+				*nPlayerScoreRoundOne = nPlayerScoreRound;
+				*nRoundOneChoice = cChoice;
 			}
 			else if (nRound == 2){
-				*nPlayerScoreRound2 = nPlayerScoreRound;
-				*nRoundTwoChoice = nChoice;
+				*nPlayerScoreRoundTwo = nPlayerScoreRound;
+				*nRoundTwoChoice = cChoice;
 			}
 			else if (nRound == 3){
-				*nPlayerScoreRound3 = nPlayerScoreRound;
-				*nRoundThreeChoice = nChoice;
+				*nPlayerScoreRoundThree = nPlayerScoreRound;
+				*nRoundThreeChoice = cChoice;
 			}
 			
 			*nPlayerTotalScore += nPlayerScoreRound;
-			*n1stChoiceCount += 1;										// Adds count to 1st choice for detecting repetitions
+			*nFirstChoiceCount += 1;										// Adds count to 1st choice for detecting repetitions
 		}
 		else {
-			*n1stChoiceCount += 1;										// if nNthChoiceCount != 0, no points, add to choice and repetition count
+			*nFirstChoiceCount += 1;										// if nNthChoiceCount != 0, no points, add to choice and repetition count
 			nRepetition = 1;
 		}
 	}
 	
-	else if (nChoice == '2') {										// 2nd choice scoring: 3 - 1 penalty = 2
-		if (*n2ndChoiceCount == 0){
+	else if (cChoice == '2') {										// 2nd choice scoring: 3 - 1 penalty = 2
+		if (*nSecondChoiceCount == 0){
 			nScoreAdded = 3;
 			nPenalty = 1;
 			nPlayerScoreRound = nScoreAdded - nPenalty;
 			
 			if (nRound == 1) {
-				*nPlayerScoreRound1 = nPlayerScoreRound;
-				*nRoundOneChoice = nChoice;
+				*nPlayerScoreRoundOne = nPlayerScoreRound;
+				*nRoundOneChoice = cChoice;
 			}
 			else if (nRound == 2){
-				*nPlayerScoreRound2 = nPlayerScoreRound;
-				*nRoundTwoChoice = nChoice;
+				*nPlayerScoreRoundTwo = nPlayerScoreRound;
+				*nRoundTwoChoice = cChoice;
 			}
 			else if (nRound == 3){
-				*nPlayerScoreRound3 = nPlayerScoreRound;
-				*nRoundThreeChoice = nChoice;
+				*nPlayerScoreRoundThree = nPlayerScoreRound;
+				*nRoundThreeChoice = cChoice;
 			}
 			
 			*nPlayerTotalScore += nPlayerScoreRound;
-			*n2ndChoiceCount += 1;
+			*nSecondChoiceCount += 1;
 		}
 		else {
-			*n2ndChoiceCount += 1;
+			*nSecondChoiceCount += 1;
 			nRepetition = 1;
 		}
 	}
 	
-	else if (nChoice == '3') {										// 3rd choice scoring: 3 - 2 penalty = 1
-		if (*n3rdChoiceCount == 0){
+	else if (cChoice == '3') {										// 3rd choice scoring: 3 - 2 penalty = 1
+		if (*nThirdChoiceCount == 0){
 			nScoreAdded = 3;
 			nPenalty = 2;
 			nPlayerScoreRound = nScoreAdded - nPenalty;
 			
 			if (nRound == 1) {
-				*nPlayerScoreRound1 = nPlayerScoreRound;
-				*nRoundOneChoice = nChoice;
+				*nPlayerScoreRoundOne = nPlayerScoreRound;
+				*nRoundOneChoice = cChoice;
 			}
 			else if (nRound == 2){
-				*nPlayerScoreRound2 = nPlayerScoreRound;
-				*nRoundTwoChoice = nChoice;
+				*nPlayerScoreRoundTwo = nPlayerScoreRound;
+				*nRoundTwoChoice = cChoice;
 			}
 			else if (nRound == 3){
-				*nPlayerScoreRound3 = nPlayerScoreRound;
-				*nRoundThreeChoice = nChoice;
+				*nPlayerScoreRoundThree = nPlayerScoreRound;
+				*nRoundThreeChoice = cChoice;
 			}
 			
 			*nPlayerTotalScore += nPlayerScoreRound;
-			*n3rdChoiceCount += 1;
+			*nThirdChoiceCount += 1;
 		}
 		else {
-			*n3rdChoiceCount += 1;
+			*nThirdChoiceCount += 1;
 			nRepetition = 1;
 		}
 	}
 	
-	else if (nChoice == '4') {										// 4th choice scoring: 3 - 4 penalty = -1
-		if (*n4thChoiceCount == 0){
+	else if (cChoice == '4') {										// 4th choice scoring: 3 - 4 penalty = -1
+		if (*nFourthChoiceCount == 0){
 			nScoreAdded = 3;
 			nPenalty = 4;
 			nPlayerScoreRound = nScoreAdded - nPenalty;
 			
 			if (nRound == 1) {
-				*nPlayerScoreRound1 = nPlayerScoreRound;
-				*nRoundOneChoice = nChoice;
+				*nPlayerScoreRoundOne = nPlayerScoreRound;
+				*nRoundOneChoice = cChoice;
 			}
 			else if (nRound == 2){
-				*nPlayerScoreRound2 = nPlayerScoreRound;
-				*nRoundTwoChoice = nChoice;
+				*nPlayerScoreRoundTwo = nPlayerScoreRound;
+				*nRoundTwoChoice = cChoice;
 			}
 			else if (nRound == 3){
-				*nPlayerScoreRound3 = nPlayerScoreRound;
-				*nRoundThreeChoice = nChoice;
+				*nPlayerScoreRoundThree = nPlayerScoreRound;
+				*nRoundThreeChoice = cChoice;
 			}
 			
 			*nPlayerTotalScore += nPlayerScoreRound;
-			*n4thChoiceCount += 1;
+			*nFourthChoiceCount += 1;
 		}
 		else {
-			*n4thChoiceCount += 1;
+			*nFourthChoiceCount += 1;
 			nRepetition = 1;
 		}
 	}
 	
-	playerScoreSummary(nDebateNum, nRepetition, nChoice, nScoreAdded, nPenalty);
+	playerScoreSummary(nDebateNum, nRepetition, cChoice, nScoreAdded, nPenalty);
 	
 }
 
-void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRound1, int *nBotScoreRound2, int *nBotScoreRound3) {
+/*	Computes for the bot's score each round and displays their choices and points added and deducted.
+	@param	(int)	nDebateNum is the current debate iteration
+	@param	(int)	nRound is the current round number
+	@param	(int*)	nBotTotalScore is the current total score of the bot
+	@param	(int*)	nBotScoreRoundOne is the number of points obtained by the bot in round one.
+	@param	(int*)	nBotScoreRoundTwo is the number of points obtained by the bot in round two.
+	@param	(int*)	nBotScoreRoundThree is the number of points obtained by the bot in round three.
+*/
+void
+botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRoundOne, int *nBotScoreRoundTwo, int *nBotScoreRoundThree) {
 	int nScoreAdded, nPenalty, nBotScoreRound;
 	
 	if (nDebateNum == 1){
@@ -369,7 +446,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 2;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			*nBotScoreRound1 = nBotScoreRound;
+			*nBotScoreRoundOne = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
@@ -386,7 +463,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 1;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			*nBotScoreRound2 = nBotScoreRound;
+			*nBotScoreRoundTwo = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
@@ -403,7 +480,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			*nBotScoreRound3 = nBotScoreRound;
+			*nBotScoreRoundThree = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
@@ -421,7 +498,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			*nBotScoreRound1 = nBotScoreRound;
+			*nBotScoreRoundOne = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
@@ -436,7 +513,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			*nBotScoreRound2 = nBotScoreRound;
+			*nBotScoreRoundTwo = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
@@ -451,7 +528,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 2;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			*nBotScoreRound3 = nBotScoreRound;
+			*nBotScoreRoundThree = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
@@ -469,7 +546,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			*nBotScoreRound1 = nBotScoreRound;
+			*nBotScoreRoundOne = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
@@ -484,7 +561,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			*nBotScoreRound2 = nBotScoreRound;
+			*nBotScoreRoundTwo = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
@@ -499,7 +576,7 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			*nBotScoreRound3 = nBotScoreRound;
+			*nBotScoreRoundThree = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
@@ -513,30 +590,59 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 	sleep (1);
 }
 
-void varDebug (int nPlayerTotalScore, int nPlayerScoreRound1, int nPlayerScoreRound2, int nPlayerScoreRound3, int nBotTotalScore, int nBotScoreRound1, int nBotScoreRound2, int nBotScoreRound3, int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount, int n4thChoiceCount, int nRoundOneChoice, int nRoundTwoChoice, int nRoundThreeChoice) {	
+/*	Used to trace certain variables in-between debate rounds for debug purposes.
+	@param 	(int)	nPlayerTotalScore is the current total score of the player
+	@param 	(int)	nPlayerScoreRoundOne is the number of points obtained by the player in round one.
+	@param 	(int)	nPlayerScoreRoundTwo is the number of points obtained by the player in round two.
+	@param	(int)	nPlayerScoreRoundThree is the number of points obtained by the player in round three.
+	@param	(int*)	nBotTotalScore is the current total score of the bot
+	@param	(int*)	nBotScoreRoundOne is the number of points obtained by the bot in round one.
+	@param	(int*)	nBotScoreRoundTwo is the number of points obtained by the bot in round two.
+	@param	(int*)	nBotScoreRoundThree is the number of points obtained by the bot in round three.
+	@param 	(int)	nFirstChoiceCount is the number of times the player chose the first choice.
+	@param 	(int)	nSecondChoiceCount is the number of times the player chose the second choice.
+	@param 	(int)	nThirdChoiceCount is the number of times the player chose the third choice.
+	@param 	(int)	nFourthChoiceCount is the number of times the player chose the fourth choice.
+	@param 	(int)	nRoundOneChoice is the player's choice in round one of the debate.
+	@param 	(int)	nRoundTwoChoice is the player's choice in round two of the debate.
+	@param 	(int)	nRoundThreeChoice is the player's choice in round three of the debate.
+*/
+void
+varDebug (int nPlayerTotalScore, int nPlayerScoreRoundOne, int nPlayerScoreRoundTwo, int nPlayerScoreRoundThree, int nBotTotalScore, int nBotScoreRoundOne, int nBotScoreRoundTwo, int nBotScoreRoundThree, int nFirstChoiceCount, int nSecondChoiceCount, int nThirdChoiceCount, int nFourthChoiceCount, int nRoundOneChoice, int nRoundTwoChoice, int nRoundThreeChoice) {	
 	printf	("\n");
 	printf	("DEBUG\n");
 	printf	("\n");
-	printf	("nPlayerTotalScore: %d\nnPlayerScoreRound1: %d\nnPlayerScoreRound2: %d\nnPlayerScoreRound3: %d\n", nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3);
+	printf	("nPlayerTotalScore: %d\nnPlayerScoreRoundOne: %d\nnPlayerScoreRoundTwo: %d\nnPlayerScoreRoundThree: %d\n", nPlayerTotalScore, nPlayerScoreRoundOne, nPlayerScoreRoundTwo, nPlayerScoreRoundThree);
 	printf	("\n");
 	printf ("nRoundOneChoice: %d\nnRoundTwoChoice: %d\nnRoundThreeChoice: %d\n", nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
 	printf	("\n");
-	printf	("nBotTotalScore: %d\nnBotScoreRound1: %d\nnBotScoreRound2: %d\nnBotScoreRound3: %d\n", nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3);
+	printf	("nBotTotalScore: %d\nnBotScoreRoundOne: %d\nnBotScoreRoundTwo: %d\nnBotScoreRoundThree: %d\n", nBotTotalScore, nBotScoreRoundOne, nBotScoreRoundTwo, nBotScoreRoundThree);
 	printf	("\n");
-	printf	("n1stChoiceCount: %d\nn2ndChoiceCount: %d\nn3rdChoiceCount: %d\nn4thChoiceCount: %d\n", n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount);
+	printf	("nFirstChoiceCount: %d\nnSecondChoiceCount: %d\nnThirdChoiceCount: %d\nnFourthChoiceCount: %d\n", nFirstChoiceCount, nSecondChoiceCount, nThirdChoiceCount, nFourthChoiceCount);
 }
 
-int checkBonuses (int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount, int n4thChoiceCount, int nRoundOneChoice, int nRoundTwoChoice, int nRoundThreeChoice) {
+/*	Checks for bonus conditions and returns sum of bonus points.
+	@param 	(int)	nFirstChoiceCount is the number of times the player chose the first choice.
+	@param 	(int)	nSecondChoiceCount is the number of times the player chose the second choice.
+	@param 	(int)	nThirdChoiceCount is the number of times the player chose the third choice.
+	@param 	(int)	nFourthChoiceCount is the number of times the player chose the fourth choice.
+	@param 	(int)	nRoundOneChoice is the player's choice in round one of the debate.
+	@param 	(int)	nRoundTwoChoice is the player's choice in round two of the debate.
+	@param 	(int)	nRoundThreeChoice is the player's choice in round three of the debate.
+	@return	(int)	sum of bonus points awarded
+*/
+int
+checkBonuses (int nFirstChoiceCount, int nSecondChoiceCount, int nThirdChoiceCount, int nFourthChoiceCount, int nRoundOneChoice, int nRoundTwoChoice, int nRoundThreeChoice) {
 	int nBonusPoints = 0;
 	printf("Bonuses:\n");
 	
 	// All Odd Responses
-	if (n1stChoiceCount >= 1 && n2ndChoiceCount == 0 && n3rdChoiceCount >= 1 && n4thChoiceCount == 0){				
+	if (nFirstChoiceCount >= 1 && nSecondChoiceCount == 0 && nThirdChoiceCount >= 1 && nFourthChoiceCount == 0){				
 		printf("	- All odd responses: 3\n");
 		nBonusPoints += 3;
 	}
 	// Adamant
-	else if (n1stChoiceCount == 3 || n2ndChoiceCount == 3 || n3rdChoiceCount == 3 || n4thChoiceCount == 3){			
+	else if (nFirstChoiceCount == 3 || nSecondChoiceCount == 3 || nThirdChoiceCount == 3 || nFourthChoiceCount == 3){			
 		printf("	- Adamant: 6\n");
 		nBonusPoints += 6;
 	}
@@ -547,7 +653,7 @@ int checkBonuses (int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount,
 	}
 		
 	// Book Ends
-	if (n1stChoiceCount <= 1 && n2ndChoiceCount <= 1 && n3rdChoiceCount <= 1 && n4thChoiceCount <= 1) {
+	if (nFirstChoiceCount <= 1 && nSecondChoiceCount <= 1 && nThirdChoiceCount <= 1 && nFourthChoiceCount <= 1) {
 		if (nRoundOneChoice == 1 && nRoundThreeChoice == 4 || nRoundOneChoice == 4 && nRoundThreeChoice == 1){
 			printf("	- Book ends: 4\n");
 			nBonusPoints += 4;
@@ -564,7 +670,25 @@ int checkBonuses (int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount,
 
 }
 
-void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScoreRound1, int nPlayerScoreRound2, int nPlayerScoreRound3, int nTotalBotScore, int nBotScoreRound1,  int nBotScoreRound2, int nBotScoreRound3, int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount, int n4thChoiceCount, int nRoundOneChoice, int nRoundTwoChoice, int nRoundThreeChoice) {
+/*	Displays the point summary of the debate.
+	@param	(int)	nDebateNum is the current debate iteration
+	@param 	(int)	nPlayerTotalScore is the current total score of the player
+	@param 	(int)	nPlayerScoreRoundOne is the number of points obtained by the player in round one.
+	@param 	(int)	nPlayerScoreRoundTwo is the number of points obtained by the player in round two.
+	@param	(int)	nPlayerScoreRoundThree is the number of points obtained by the player in round three.
+	@param	(int)	nBotTotalScore is the current total score of the bot
+	@param	(int)	nBotScoreRoundOne is the number of points obtained by the bot in round one.
+	@param	(int)	nBotScoreRoundTwo is the number of points obtained by the bot in round two.
+	@param	(int)	nBotScoreRoundThree is the number of points obtained by the bot in round three.
+	@param 	(int)	nFirstChoiceCount is the number of times the player chose the first choice.
+	@param 	(int)	nSecondChoiceCount is the number of times the player chose the second choice.
+	@param 	(int)	nThirdChoiceCount is the number of times the player chose the third choice.
+	@param 	(int)	nFourthChoiceCount is the number of times the player chose the fourth choice.
+	@param 	(int)	nRoundOneChoice is the player's choice in round one of the debate.
+	@param 	(int)	nRoundTwoChoice is the player's choice in round two of the debate.
+	@param 	(int)	nRoundThreeChoice is the player's choice in round three of the debate.
+*/
+void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScoreRoundOne, int nPlayerScoreRoundTwo, int nPlayerScoreRoundThree, int nTotalBotScore, int nBotScoreRoundOne,  int nBotScoreRoundTwo, int nBotScoreRoundThree, int nFirstChoiceCount, int nSecondChoiceCount, int nThirdChoiceCount, int nFourthChoiceCount, int nRoundOneChoice, int nRoundTwoChoice, int nRoundThreeChoice) {
 	char * sRoundCount;
 	int nBonusPoints;
 	
@@ -582,19 +706,19 @@ void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScor
 	}
 	
 	printf ("Team ProgCC Points:\n");
-	printf ("	- Round 1: %d\n", nPlayerScoreRound1);
-	printf ("	- Round 2: %d\n", nPlayerScoreRound2);
-	printf ("	- Round 3: %d\n", nPlayerScoreRound3);
+	printf ("	- Round 1: %d\n", nPlayerScoreRoundOne);
+	printf ("	- Round 2: %d\n", nPlayerScoreRoundTwo);
+	printf ("	- Round 3: %d\n", nPlayerScoreRoundThree);
 	
-	nBonusPoints = checkBonuses(n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);											//check for bonuses
+	nBonusPoints = checkBonuses(nFirstChoiceCount, nSecondChoiceCount, nThirdChoiceCount, nFourthChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);											//check for bonuses
 	nTotalPlayerScore += nBonusPoints;
 	printf ("\n");
 	printf ("Total: %d points\n\n", nTotalPlayerScore);
 	
 	printf ("Team Bot Annie Cal Points:\n");
-	printf ("	- Round 1: %d\n", nBotScoreRound1);
-	printf ("	- Round 2: %d\n", nBotScoreRound2);
-	printf ("	- Round 3: %d\n", nBotScoreRound3);
+	printf ("	- Round 1: %d\n", nBotScoreRoundOne);
+	printf ("	- Round 2: %d\n", nBotScoreRoundTwo);
+	printf ("	- Round 3: %d\n", nBotScoreRoundThree);
 	printf ("\n");
 	printf ("Total: %d points\n\n", nTotalBotScore);
 	
@@ -611,6 +735,10 @@ void displayDebateSummary(int nDebateNum, int nTotalPlayerScore, int nPlayerScor
 	//clrScreen();
 }
 
+/*	Asks user for Y/N input to continue to the next debate after the end of the first or second debate.
+	@param	(int)	nDebateNum is the current debate iteration
+	@return	(int)	1 to continue game, 0 to exit and stop the program.
+*/
 int continueGame (int nDebateNum){
 	char cSelect = ' ';
 	char cTemp;
@@ -661,69 +789,74 @@ int continueGame (int nDebateNum){
 
 int main() {
 /*------------------------------------------------------VARIABLE DECLARATIONS------------------------------------------------------*/	
-	int nStartGameState;				// A value of 1 means the game continues, while a value of 0 means the game stops and the program ends.
 	
-	int nDebateNum;						// Refers to debate number, e.g. 'First Debate', 'Second Debate', 'Third Debate'
+	int nStartGameState;		// A value of 1 means the game continues, while a value of 0 means the game stops and the program ends.
 	
-	int nRound;							// Round number
-	char cPlayerChoice;					// Argument choice selected by player. Set to char datatype as int will cause problems in input validation when chars/strings are inputted, causing an infinite loop.
+	int nDebateNum;				// Refers to debate number, e.g. 'First Debate', 'Second Debate', 'Third Debate'
 	
-	int nPlayerTotalScore;				// Player score
-	int nPlayerScoreRound1;				// Player score for individual rounds
-	int nPlayerScoreRound2;
-	int nPlayerScoreRound3;
+	int nRound;					// Round number
+	char cPlayerChoice;			// Argument choice selected by player. Set to char datatype as int will cause problems in input validation when chars/strings are inputted, causing an infinite loop.
 	
-	int nRoundOneChoice;				// Takes choices from cPlayerChoice in each round. Converts character value of cPlayerChoice to an integer ASCII value.
-	int nRoundTwoChoice;				// Used in checkBonuses() function
+	int nPlayerTotalScore;		// Player score
+	int nPlayerScoreRoundOne;		// Player score for individual rounds
+	int nPlayerScoreRoundTwo;
+	int nPlayerScoreRoundThree;		
+	
+	int nRoundOneChoice;		// Takes choices from cPlayerChoice in each round. Converts character value of cPlayerChoice to an integer ASCII value.
+	int nRoundTwoChoice;		// Used in checkBonuses() function
 	int nRoundThreeChoice;
 	
-	int n1stChoiceCount;				// Counters to determine if repititions happen
-	int n2ndChoiceCount;				// in choices, used in playerAddScore() function
-	int n3rdChoiceCount;
-	int n4thChoiceCount;
+	int nFirstChoiceCount;		// Counters to determine if repititions happen
+	int nSecondChoiceCount;		// in choices, used in playerAddScore() function
+	int nThirdChoiceCount;
+	int nFourthChoiceCount;
 	
-	int nBotTotalScore;					// Total bot score for each debate
-	int nBotScoreRound1;				// Bot scores for individual rounds
-	int nBotScoreRound2;
-	int nBotScoreRound3;
+	int nBotTotalScore;			// Total bot score for each debate
+	int nBotScoreRoundOne;		// Bot scores for individual rounds
+	int nBotScoreRoundTwo;
+	int nBotScoreRoundThree;
 	
 /*------------------------------------------------------GAME PROPER------------------------------------------------------*/
 	
 	nStartGameState = startGame();
 	
-	if (nStartGameState == 1){
-		printf("The game will now start!");
-		sleep(1);
+	if (nStartGameState == 1){					// Proceed with debate game if nStartGameState == 1
+		printf("The game will now start!");		
+		sleep(2);
 		clrScreen();
 		
 			/*------------------------------------------------------DEBATE PROPER------------------------------------------------------*/
-			for (nDebateNum = 1; nDebateNum <= 3 && nStartGameState == 1; nDebateNum += 1) {
+			
+			for (nDebateNum = 1; nDebateNum <= 3 && nStartGameState == 1; nDebateNum += 1) {		// Loops the whole debate section three times, 
+																									// and watches out for nStartGameState in case
+																									// user decides to quit game after a debate.
 			
 				/*------------------------------------------------------PRE-DEBATE RESET SETTINGS------------------------------------------------------*/
+				// Makes sure that all values are reset to 0 after each debate to avoid any logical errors at the start of each debate.
 				nPlayerTotalScore 	= 0;
-				nPlayerScoreRound1 	= 0;	
-				nPlayerScoreRound2 	= 0;
-				nPlayerScoreRound3 	= 0;
+				nPlayerScoreRoundOne 	= 0;	
+				nPlayerScoreRoundTwo 	= 0;
+				nPlayerScoreRoundThree 	= 0;
 				
 				nRoundOneChoice 	= 0;
 				nRoundTwoChoice 	= 0;
 				nRoundThreeChoice 	= 0;
 				
-				n1stChoiceCount 	= 0;			
-				n2ndChoiceCount 	= 0;			
-				n3rdChoiceCount 	= 0;
-				n4thChoiceCount 	= 0;
+				nFirstChoiceCount 	= 0;			
+				nSecondChoiceCount 	= 0;			
+				nThirdChoiceCount 	= 0;
+				nFourthChoiceCount 	= 0;
 				
-				n1stChoiceCount 	= 0;				
-				n2ndChoiceCount 	= 0;				
-				n3rdChoiceCount 	= 0;
-				n4thChoiceCount 	= 0;
+				nFirstChoiceCount 	= 0;				
+				nSecondChoiceCount 	= 0;				
+				nThirdChoiceCount 	= 0;
+				nFourthChoiceCount 	= 0;
 				
 				
 				nBotTotalScore 		= 0;
-				nBotScoreRound1 	= 0;	
-				nBotScoreRound2 	= 0;
-				nBotScoreRound3 	= 0;
+				nBotScoreRoundOne 	= 0;	
+				nBotScoreRoundTwo 	= 0;
+				nBotScoreRoundThree 	= 0;
 				
 				displayDebateDetails(nDebateNum);
 				
@@ -732,13 +865,15 @@ int main() {
 					displayRoundNumber(nRound);			
 					displayArgChoices(nDebateNum, nRound);
 					cPlayerChoice = playerSelectStatement();
-					playerAddScore(nDebateNum, nRound, cPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRound1, &nPlayerScoreRound2, &nPlayerScoreRound3, &n1stChoiceCount, &n2ndChoiceCount, &n3rdChoiceCount, &n4thChoiceCount, &nRoundOneChoice, &nRoundTwoChoice, &nRoundThreeChoice);
-					botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRound1, &nBotScoreRound2, &nBotScoreRound3);
-					varDebug(nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
+					playerAddScore(nDebateNum, nRound, cPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRoundOne, &nPlayerScoreRoundTwo, &nPlayerScoreRoundThree, &nFirstChoiceCount, &nSecondChoiceCount, &nThirdChoiceCount, &nFourthChoiceCount, &nRoundOneChoice, &nRoundTwoChoice, &nRoundThreeChoice);
+					botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRoundOne, &nBotScoreRoundTwo, &nBotScoreRoundThree);
+					
+					/* Uncomment this to show trace values after each round */
+					//varDebug(nPlayerTotalScore, nPlayerScoreRoundOne, nPlayerScoreRoundTwo, nPlayerScoreRoundThree, nBotTotalScore, nBotScoreRoundOne, nBotScoreRoundTwo, nBotScoreRoundThree, nFirstChoiceCount, nSecondChoiceCount, nThirdChoiceCount, nFourthChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
 				}
 				
 				/*------------------------------------------------------POST-DEBATE------------------------------------------------------*/
-				displayDebateSummary(nDebateNum, nPlayerTotalScore, nPlayerScoreRound1, nPlayerScoreRound2, nPlayerScoreRound3, nBotTotalScore, nBotScoreRound1, nBotScoreRound2, nBotScoreRound3, n1stChoiceCount, n2ndChoiceCount, n3rdChoiceCount, n4thChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
+				displayDebateSummary(nDebateNum, nPlayerTotalScore, nPlayerScoreRoundOne,nPlayerScoreRoundTwo, nPlayerScoreRoundThree, nBotTotalScore, nBotScoreRoundOne, nBotScoreRoundTwo, nBotScoreRoundThree, nFirstChoiceCount, nSecondChoiceCount, nThirdChoiceCount, nFourthChoiceCount, nRoundOneChoice, nRoundTwoChoice, nRoundThreeChoice);
 				
 				if (nDebateNum == 1 || nDebateNum == 2){
 					nStartGameState = continueGame(nDebateNum);
@@ -751,9 +886,9 @@ int main() {
 			}
 	}
 	
-	else {
-		printf("\n\n");
-		printf("The game will now end.");
+	else {										// If user decides to quit at the start of the program,
+		printf("\n\n");							// nStartGameState == 0 and the program exits.
+		printf("The game will now end.");		
 	}
 	return 0;
 	
