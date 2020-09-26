@@ -97,7 +97,7 @@ void displayArgChoices (int nDebateNum, int nRound) {
 }
 
 int playerSelectStatement () {
-	int nChoice;
+	int nChoice = 0;
 	
 	while(nChoice != 1 && nChoice != 2 && nChoice != 3 && nChoice != 4 ) {
 		
@@ -417,24 +417,14 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			if (nRound == 1) {
-				*nBotScoreRound1 = nBotScoreRound;
-			}
-			else if (nRound == 2){
-				*nBotScoreRound2 = nBotScoreRound;
-			}
-			else if (nRound == 3){
-				*nBotScoreRound3 = nBotScoreRound;
-			}
+			*nBotScoreRound1 = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("a\n");
-			printf("b\n\n");
+			printf("Shifting our focus to Mars may lead to neglect towards sustaining Earth.\n\n");
 			//sleep (1);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nScoreAdded);
-			printf("*Team Bot Annie Cal gets -%d Argument Points for Not Citing Sources*\n", nPenalty);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Environmentalism*\n", nScoreAdded);
 		}
 		
 		else if (nRound == 2) {
@@ -442,24 +432,14 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			if (nRound == 1) {
-				*nBotScoreRound1 = nBotScoreRound;
-			}
-			else if (nRound == 2){
-				*nBotScoreRound2 = nBotScoreRound;
-			}
-			else if (nRound == 3){
-				*nBotScoreRound3 = nBotScoreRound;
-			}
+			*nBotScoreRound2 = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("c\n");
-			printf("d\n\n");
+			printf("We may risk contaminating the Martian environment.\n\n");
 			//sleep (1);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nScoreAdded);
-			printf("*Team Bot Annie Cal gets -%d Argument Points for No Evidence*\n", nPenalty);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Contamination-Conscious*\n", nScoreAdded);
 		}
 		
 		else if (nRound == 3) {
@@ -467,23 +447,15 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 2;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			if (nRound == 1) {
-				*nBotScoreRound1 = nBotScoreRound;
-			}
-			else if (nRound == 2){
-				*nBotScoreRound2 = nBotScoreRound;
-			}
-			else if (nRound == 3){
-				*nBotScoreRound3 = nBotScoreRound;
-			}
+			*nBotScoreRound3 = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("e\n");
-			printf("f\n\n");
+			printf("All that we need is on Earth.\n");
 			//sleep (1);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Compelling Argument*\n", nScoreAdded);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Contentedness*\n", nScoreAdded);
+			printf("*Team Bot Annie Cal gets -%d Argument Points for Denial of Current Issues*\n", nPenalty);
 		}
 	}
 	
@@ -493,24 +465,14 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			if (nRound == 1) {
-				*nBotScoreRound1 = nBotScoreRound;
-			}
-			else if (nRound == 2){
-				*nBotScoreRound2 = nBotScoreRound;
-			}
-			else if (nRound == 3){
-				*nBotScoreRound3 = nBotScoreRound;
-			}
+			*nBotScoreRound1 = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("a\n");
-			printf("b\n\n");
+			printf("League of Legends has a bigger playerbase.\n");
 			//sleep (1);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nScoreAdded);
-			printf("*Team Bot Annie Cal gets -%d Argument Points for Not Citing Sources*\n", nPenalty);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Healthy Playerbase*\n", nScoreAdded);
 		}
 		
 		else if (nRound == 2) {
@@ -518,24 +480,14 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			if (nRound == 1) {
-				*nBotScoreRound1 = nBotScoreRound;
-			}
-			else if (nRound == 2){
-				*nBotScoreRound2 = nBotScoreRound;
-			}
-			else if (nRound == 3){
-				*nBotScoreRound3 = nBotScoreRound;
-			}
+			*nBotScoreRound2 = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
 			
-			printf("c\n");
-			printf("d\n\n");
+			printf("League of Legends doesn’t have a very steep learning curve to play.\n");
 			//sleep (1);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nScoreAdded);
-			printf("*Team Bot Annie Cal gets -%d Argument Points for No Evidence*\n", nPenalty);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Accessibility*\n", nScoreAdded);
 		}
 		
 		else if (nRound == 3) {
@@ -543,23 +495,14 @@ void botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotSco
 			nPenalty = 0;
 			nBotScoreRound = nScoreAdded - nPenalty;
 			
-			if (nRound == 1) {
-				*nBotScoreRound1 = nBotScoreRound;
-			}
-			else if (nRound == 2){
-				*nBotScoreRound2 = nBotScoreRound;
-			}
-			else if (nRound == 3){
-				*nBotScoreRound3 = nBotScoreRound;
-			}
+			*nBotScoreRound3 = nBotScoreRound;
 			
-			*nBotTotalScore += nScoreAdded - nPenalty;
+			*nBotTotalScore += nBotScoreRound;
 			
-			printf("e\n");
-			printf("f\n\n");
+			printf("League of Legends is better promoted with short animated movies and original songs.\n");
 			//sleep (1);
 			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Compelling Argument*\n", nScoreAdded);
+			printf("*Team Bot Annie Cal gets %d Argument Points for Creativity*\n", nScoreAdded);
 		}
 	}
 	
@@ -593,20 +536,20 @@ int checkBonuses (int n1stChoiceCount, int n2ndChoiceCount, int n3rdChoiceCount,
 		printf("	- Adamant: 6\n");
 		nBonusPoints += 6;
 	}
-	// All In Due Time here
+	// All In Due Time
 	else if (nRoundThreeChoice - nRoundTwoChoice == 1 && nRoundTwoChoice - nRoundOneChoice == 1) {
 		printf("	- All in due time: 4\n");
 		nBonusPoints += 4;
 	}
 		
-	// Book ends
+	// Book Ends
 	if (n1stChoiceCount <= 1 && n2ndChoiceCount <= 1 && n3rdChoiceCount <= 1 && n4thChoiceCount <= 1) {
 		if (nRoundOneChoice == 1 && nRoundThreeChoice == 4 || nRoundOneChoice == 4 && nRoundThreeChoice == 1){
 			printf("	- Book ends: 4\n");
 			nBonusPoints += 4;
 		}
 	}
-	//Absurd opening
+	//Absurd Opening
 	if (nRoundOneChoice == 4) {
 		printf("	- Absurd opening: 2\n");
 		nBonusPoints += 2;
