@@ -6,8 +6,6 @@
 	
 	Known Bugs:			- Entering two characters in prompts may result in input buffer issues, causing succeeding prompts to not work properly.
 */
-
-
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -117,8 +115,8 @@ displayRoundNumber(int nRound) {
 void
 displayArgChoices (int nDebateNum, int nRound) {
 	
-	if (nRound == 1) {
-		printf("Opening statement (Input either 1, 2, 3, or 4):\n");
+	if (nRound == 1) {														// Switches from "Opening statement" in the first round to "Your
+		printf("Opening statement (Input either 1, 2, 3, or 4):\n");		// response" in the second and third rounds.
 	}
 	else {
 		printf("Your response (Input either 1, 2, 3, or 4):\n");
@@ -152,18 +150,18 @@ displayArgChoices (int nDebateNum, int nRound) {
 */
 char
 playerSelectStatement () {
-	char nChoice = ' ';		// nChoice has a char datatype instead of int because
+	char cChoice = ' ';		// cChoice has a char datatype instead of int because
 	char cTemp;				// of an infinite loop bug in the input validation
-							// while loop caused by entering a string when nChoice is
-							// an int.
+							// while loop caused by entering a string when datatype is
+							// int.
 	
-	while(!(nChoice == '1' || nChoice == '2' || nChoice == '3' || nChoice == '4')) {				// As of now, inputting a negative sign (-) with
+	while(!(cChoice == '1' || cChoice == '2' || cChoice == '3' || cChoice == '4')) {				// As of now, inputting a negative sign (-) with
 																									// a valid choice (1, 2, 3, 4) is accepted because
-		printf("Your choice: ");																	// nChoice is a char, not an int. Not sure how to fix.
-		scanf("%c%c", &nChoice, &cTemp);
+		printf("Your choice: ");																	// cChoice is a char, not an int. Not sure how to fix.
+		scanf("%c%c", &cChoice, &cTemp);
 		
-		if (!(nChoice == '1' || nChoice == '2' || nChoice == '3' || nChoice == '4')){
-			printf("%c is not a valid choice, please input either 1, 2, 3, or 4.", nChoice);		
+		if (!(cChoice == '1' || cChoice == '2' || cChoice == '3' || cChoice == '4')){
+			printf("%c is not a valid choice, please input either 1, 2, 3, or 4.", cChoice);		
 			newLine(2);
 		}
 		
@@ -171,29 +169,29 @@ playerSelectStatement () {
 	newLine(1);
 	
 	
-	return nChoice;
+	return cChoice;
 }
 
 /*	Displays text based on player choice, as well as +/- points with "justifications"
 	@param	(int)	nDebateNum is the current debate iteration
 	@param	(int)	nRepetitionStatus is 0 for no repetition, and 1 for repetition
-	@param	(char)	nChoice is the choice selected by the user (1, 2, 3, or 4)
+	@param	(char)	cChoice is the choice selected by the user (1, 2, 3, or 4)
 	@param	(int)	nScoreAdded is the number of points added to the player's score
 	@param	(int)	nPenalty is the number of points deducted from the player's score
 */
 void
-playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, int nScoreAdded, int nPenalty) {
+playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char cChoice, int nScoreAdded, int nPenalty) {
 	
-	if (nDebateNum == 1) {
-		if (nRepetitionStatus == 0){
-			if (nChoice == '1') {
+	if (nDebateNum == 1) {					// Displays statements relevant to debate topic
+		if (nRepetitionStatus == 0){		// Checks for repetition
+			if (cChoice == '1') {
 				printf("Team ProgCC: Homework is necessary because it reinforces what students learn in the classroom.");
 				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Assertiveness*", nScoreAdded); 			
 			}															
 			
-			else if (nChoice == '2') {
+			else if (cChoice == '2') {
 				printf("Team ProgCC: Years of data show that homework is an effective way of supplementing discussions.");
 				sleep(1);
 				newLine(2);
@@ -201,7 +199,7 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 				printf("*Team ProgCC gets -%d Argument Points for Possible Selection Bias*", nPenalty);
 			}
 			
-			else if (nChoice == '3') {
+			else if (cChoice == '3') {
 				printf("Team ProgCC: I don't know about you, but our forefathers would be mad if we ban homeworks.");
 				sleep(1);
 				newLine(2);
@@ -210,7 +208,7 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 				
 			}
 			
-			else if (nChoice == '4') {
+			else if (cChoice == '4') {
 				printf("Team ProgCC: Homeworks are like the peanut to a peanut butter jelly sandwich!");
 				sleep(1);
 				newLine(2);
@@ -222,7 +220,7 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 			
 		}
 		
-		else {
+		else {				// If repetition is detected, player gets no points.
 			sleep(1);
 			printf("*Team ProgCC gets 0 Argument Points for Repetition*");
 			newLine(2);
@@ -232,14 +230,14 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 	else if (nDebateNum == 2) {
 		if (nRepetitionStatus == 0) {
 			
-			if (nChoice == '1') {
+			if (cChoice == '1') {
 				printf("Team ProgCC: A mass extinction event on Earth may naturally occur sooner or later.");
 				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Realism*", nScoreAdded);
 			}
 			
-			else if (nChoice == '2') {
+			else if (cChoice == '2') {
 				printf("Team ProgCC: We may be able to get more resources from Mars.");
 				sleep(1);
 				newLine(2);
@@ -247,7 +245,7 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 				printf("*Team ProgCC gets -%d Argument Points for Slight Greed*", nPenalty);
 			}
 			
-			else if (nChoice == '3') {
+			else if (cChoice == '3') {
 				printf("Team ProgCC: It may help us understand our own planet more.");
 				sleep(1);
 				newLine(2);
@@ -255,7 +253,7 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 				printf("*Team ProgCC gets -%d Argument Points for Not Specific*", nPenalty);
 			}
 			
-			else if (nChoice == '4') {
+			else if (cChoice == '4') {
 				printf("Team ProgCC: We can fulfill our destiny to explore the great unknown!");
 				sleep(1);
 				newLine(2);
@@ -276,14 +274,14 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 	else if (nDebateNum == 3) {
 		if (nRepetitionStatus == 0) {
 			
-			if (nChoice == '1') {
+			if (cChoice == '1') {
 				printf("Team ProgCC: All the heroes in Dota 2 are unlocked from the start.");
 				sleep(1);
 				newLine(2);
 				printf("*Team ProgCC gets %d Argument Points for Freedom of Choice*\n", nScoreAdded);
 			}
 			
-			else if (nChoice == '2') {
+			else if (cChoice == '2') {
 				printf("Team ProgCC: The biggest Dota 2 tournament has the largest prize pool in esports history.");
 				sleep(1);
 				newLine(2);
@@ -291,7 +289,7 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 				printf("*Team ProgCC gets -%d Argument Points for Bravado*", nPenalty);
 			}
 			
-			else if (nChoice == '3') {
+			else if (cChoice == '3') {
 				printf("Team ProgCC: Dota 2 is a much more complex game.");
 				sleep(1);
 				newLine(2);
@@ -299,7 +297,7 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 				printf("*Team ProgCC gets -%d Argument Points for Complex != Better*", nPenalty);
 			}
 			
-			else if (nChoice == '4') {
+			else if (cChoice == '4') {
 				printf("Team ProgCC: Dota 2 is better, and LoL players can't deny.");
 				sleep(1);
 				newLine(2);
@@ -322,7 +320,7 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char nChoice, in
 /*	Computes for the player's score
 	@param (int)	nDebateNum is the current debate iteration
 	@param (int)	nRound is the current round number
-	@param (int)	nChoice is the choice selected by the user (1, 2, 3, or 4)
+	@param (int)	cChoice is the choice selected by the user (1, 2, 3, or 4)
 	@param (int*)	nPlayerTotalScore is the current total score of the player
 	@param (int*)	nPlayerScoreRoundOne is the number of points obtained by the player in round one.
 	@param (int*)	nPlayerScoreRoundTwo is the number of points obtained by the player in round two.
@@ -341,12 +339,13 @@ playerAddScore (int nDebateNum, int nRound, char cChoice, int *nPlayerTotalScore
 	int nScoreAdded, nPenalty, nPlayerScoreRound;
 	int nRepetition = 0;
 	
-	if (cChoice == '1') {
+	if (cChoice == '1') {			// 1st choice scoring: 3 - 0 penalty = 3
 		if (*nFirstChoiceCount == 0){
 			nScoreAdded = 3;
 			nPenalty = 0;
 			nPlayerScoreRound = nScoreAdded - nPenalty;
 			
+			// Checks current round and stores player score and choice of that round to respective variables
 			if (nRound == 1) {
 				*nPlayerScoreRoundOne = nPlayerScoreRound;
 				*nRoundOneChoice = cChoice;
@@ -356,20 +355,20 @@ playerAddScore (int nDebateNum, int nRound, char cChoice, int *nPlayerTotalScore
 				*nRoundTwoChoice = cChoice;
 			}
 			else if (nRound == 3){
-				*nPlayerScoreRoundThree = nPlayerScoreRound;
+				*nPlayerScoreRoundThree = nPlayerScoreRound;		
 				*nRoundThreeChoice = cChoice;
 			}
 			
 			*nPlayerTotalScore += nPlayerScoreRound;
-			*nFirstChoiceCount += 1;										// Adds count to 1st choice for detecting repetitions
+			*nFirstChoiceCount += 1;								// Adds count to 1st choice for detecting repetitions
 		}
 		else {
-			*nFirstChoiceCount += 1;										// if nNthChoiceCount != 0, no points, add to choice and repetition count
+			*nFirstChoiceCount += 1;								// if nNthChoiceCount != 0, no points, add to choice and repetition count
 			nRepetition = 1;
 		}
 	}
 	
-	else if (cChoice == '2') {										// 2nd choice scoring: 3 - 1 penalty = 2
+	else if (cChoice == '2') {			// 2nd choice scoring: 3 - 1 penalty = 2
 		if (*nSecondChoiceCount == 0){
 			nScoreAdded = 3;
 			nPenalty = 1;
@@ -397,7 +396,7 @@ playerAddScore (int nDebateNum, int nRound, char cChoice, int *nPlayerTotalScore
 		}
 	}
 	
-	else if (cChoice == '3') {										// 3rd choice scoring: 3 - 2 penalty = 1
+	else if (cChoice == '3') {			// 3rd choice scoring: 3 - 2 penalty = 1
 		if (*nThirdChoiceCount == 0){
 			nScoreAdded = 3;
 			nPenalty = 2;
@@ -425,7 +424,7 @@ playerAddScore (int nDebateNum, int nRound, char cChoice, int *nPlayerTotalScore
 		}
 	}
 	
-	else if (cChoice == '4') {										// 4th choice scoring: 3 - 4 penalty = -1
+	else if (cChoice == '4') {			// 4th choice scoring: 3 - 4 penalty = -1
 		if (*nFourthChoiceCount == 0){
 			nScoreAdded = 3;
 			nPenalty = 4;
@@ -636,7 +635,7 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 	sleep(1);
 }
 
-/*	Used mainly for nRoundXChoice variables to convert from nChoice ASCII value to proper integer.
+/*	Used mainly for nRoundXChoice variables to convert from cChoice ASCII value to proper integer.
 	@param 	(int*)	nRoundOneChoice is the player's choice in round one of the debate.
 	@param 	(int*)	nRoundTwoChoice is the player's choice in round two of the debate.
 	@param 	(int*)	nRoundThreeChoice is the player's choice in round three of the debate.	
@@ -644,10 +643,10 @@ botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRou
 void
 convertASCIIValueToInt (int *nRoundOneChoice, int *nRoundTwoChoice, int *nRoundThreeChoice) {
 	
-	if (*nRoundOneChoice == 49){
-		*nRoundOneChoice = 1;
-	}
-	else if (*nRoundOneChoice == 50){
+	if (*nRoundOneChoice == 49){				//	49 = 1
+		*nRoundOneChoice = 1;					//	50 = 2
+	}											//	51 = 3
+	else if (*nRoundOneChoice == 50){			//	52 = 4
 		*nRoundOneChoice = 2;
 	}
 	else if (*nRoundOneChoice == 51){
