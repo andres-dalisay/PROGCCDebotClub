@@ -323,7 +323,7 @@ playerRoundScoreSummary (int nDebateNum, int nRepetitionStatus, char cChoice, in
 			newLine(2);
 			
 			if (nRepetitionStatus == 0){		
-				printf("*Team ProgCC gets %d Argument Points for Freedom of Choice*\n", nScoreAdded);
+				printf("*Team ProgCC gets %d Argument Points for Freedom of Choice*", nScoreAdded);
 			}
 
 			else {			
@@ -527,8 +527,8 @@ playerAddScore (int nDebateNum, int nRound, char cChoice, int *nPlayerTotalScore
 /*	Displays the bot's argument choice, as well as additions and deductions to points with "justifications."
 	@param	(int)	nDebateNum is the current debate iteration.
 	@param	(int)	nRound is the current round number.
-	@param	(int)	nScoreAdded is the number of points added to the bot's score.
-	@param	(int)	nPenalty is the number of points deducted from the bot's score.
+	@param	(int)	nBotScoreAdded is the number of points added to the bot's score.
+	@param	(int)	nBotPenalty is the number of points deducted from the bot's score.
 */
 void
 botRoundScoreSummary (int nDebateNum, int nRound, int nBotScoreAdded, int nBotPenalty) {
@@ -627,7 +627,7 @@ botRoundScoreSummary (int nDebateNum, int nRound, int nBotScoreAdded, int nBotPe
 	}	
 }
 
-/*	Computes for the bot's score each round and displays their choices and points added and deducted.
+/*	Computes for the bot's score each round.
 	@param	(int)	nDebateNum is the current debate iteration.
 	@param	(int)	nRound is the current round number.
 	@param	(int*)	nBotTotalScore is the current total score of the bot.
@@ -636,7 +636,7 @@ botRoundScoreSummary (int nDebateNum, int nRound, int nBotScoreAdded, int nBotPe
 	@param	(int*)	nBotScoreRoundThree is the number of points obtained by the bot in round three.
 */
 void
-botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRoundOne, int *nBotScoreRoundTwo, int *nBotScoreRoundThree) {
+botAddScore (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRoundOne, int *nBotScoreRoundTwo, int *nBotScoreRoundThree) {
 	int nBotScoreAdded, nBotPenalty, nBotScoreRound;
 	
 	if (nDebateNum == 1){
@@ -1072,7 +1072,7 @@ int main() {
 					displayArgChoices(nDebateNum, nRound);
 					cPlayerChoice = playerSelectStatement();
 					playerAddScore(nDebateNum, nRound, cPlayerChoice, &nPlayerTotalScore, &nPlayerScoreRoundOne, &nPlayerScoreRoundTwo, &nPlayerScoreRoundThree, &nFirstChoiceCount, &nSecondChoiceCount, &nThirdChoiceCount, &nFourthChoiceCount, &nRoundOneChoice, &nRoundTwoChoice, &nRoundThreeChoice);
-					botStatement(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRoundOne, &nBotScoreRoundTwo, &nBotScoreRoundThree);
+					botAddScore(nDebateNum, nRound, &nBotTotalScore, &nBotScoreRoundOne, &nBotScoreRoundTwo, &nBotScoreRoundThree);
 					
 					convertASCIIValueToInt(&nRoundOneChoice, &nRoundTwoChoice, &nRoundThreeChoice);		// Because cPlayerChoice is a char, nRoundXChoice variables come out as their
 																										// ASCII value equivalents. Thus, they need to be changed to their real integer
