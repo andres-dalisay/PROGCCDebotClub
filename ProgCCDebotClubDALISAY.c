@@ -2,7 +2,7 @@
 	Description:		This program is a debate-style
 						game where the user selects various arguments
 						to get a higher score than the opposition bot team.
-	Last Modified:		SEPT-27-2020
+	Last Modified:		SEPT-28-2020
 	
 	Known Bugs:			- Entering two characters in prompts may result in input buffer issues, causing succeeding prompts to not work properly.
 */
