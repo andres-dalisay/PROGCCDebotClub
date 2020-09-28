@@ -524,6 +524,109 @@ playerAddScore (int nDebateNum, int nRound, char cChoice, int *nPlayerTotalScore
 	
 }
 
+/*	Displays the bot's argument choice, as well as additions and deductions to points with "justifications."
+	@param	(int)	nDebateNum is the current debate iteration.
+	@param	(int)	nRound is the current round number.
+	@param	(int)	nScoreAdded is the number of points added to the bot's score.
+	@param	(int)	nPenalty is the number of points deducted from the bot's score.
+*/
+void
+botRoundScoreSummary (int nDebateNum, int nRound, int nBotScoreAdded, int nBotPenalty) {
+	
+	if (nDebateNum == 1){
+		if (nRound == 1) {
+			printf("Team Bot Annie Cal responds with: It is a well-known fact that homework provides\n");
+			printf("additional unnecessary cognitive load for students!");
+			newLine(2);
+			sleep(1);
+			
+			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nBotScoreAdded);
+			printf("*Team Bot Annie Cal gets -%d Argument Points for Not Citing Sources*", nBotPenalty);
+			newLine(2);
+		}
+		
+		else if (nRound == 2) {
+			printf("Team Bot Annie Cal responds with: There are better ways to asses learning other than\n");
+			printf("homeworks!");
+			newLine(2);
+			sleep(1);
+			
+			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nBotScoreAdded);
+			printf("*Team Bot Annie Cal gets -%d Argument Points for No Evidence*", nBotPenalty);
+			newLine(2);
+		}
+		
+		else if (nRound == 3) {
+			printf("Team Bot Annie Cal responds with: Learning also happens on weekends despite homework,\n");
+			printf("when students get to reflect on class discussions.");
+			newLine(2);
+			sleep(1);
+			
+			printf("*Team Bot Annie Cal gets %d Argument Points for Compelling Argument*", nBotScoreAdded);
+			newLine(2);
+		}
+	}
+	
+	else if (nDebateNum == 2) {
+		if (nRound == 1) {
+			printf("Team Bot Annie Cal responds with: Shifting our focus to Mars may lead to neglect towards sustaining Earth.");
+			newLine(2);
+			sleep(1);
+			
+			printf("*Team Bot Annie Cal gets %d Argument Points for Environmentalism*", nBotScoreAdded);
+			newLine(2);
+		}
+		
+		else if (nRound == 2) {
+			printf("Team Bot Annie Cal responds with: We may risk contaminating the Martian environment.");
+			newLine(2);
+			sleep(1);
+			
+			printf("*Team Bot Annie Cal gets %d Argument Points for Contamination-Conscious*", nBotScoreAdded);
+			newLine(2);
+		}
+		
+		else if (nRound == 3) {
+			printf("Team Bot Annie Cal responds with: All that we need is on Earth.");
+			newLine(2);
+			sleep(1);
+			
+			printf("*Team Bot Annie Cal gets %d Argument Points for Contentedness*\n", nBotScoreAdded);
+			printf("*Team Bot Annie Cal gets -%d Argument Points for Denial of Current Issues*", nBotPenalty);
+			newLine(2);
+		}
+	}
+	
+	else if (nDebateNum == 3) {
+		if (nRound == 1) {
+			printf("Team Bot Annie Cal responds with: League of Legends has a bigger playerbase.");
+			newLine(2);
+			sleep(1);
+			
+			printf("*Team Bot Annie Cal gets %d Argument Points for Healthy Playerbase*", nBotScoreAdded);
+			newLine(2);
+		}
+		
+		else if (nRound == 2) {
+			printf("Team Bot Annie Cal responds with: League of Legends doesn't have a very steep learning curve to play.");
+			newLine(2);
+			sleep(1);
+			
+			printf("*Team Bot Annie Cal gets %d Argument Points for Accessibility*", nBotScoreAdded);
+			newLine(2);
+		}
+		
+		else if (nRound == 3) {
+			printf("Team Bot Annie Cal responds with: League of Legends is better promoted with short animated movies and original songs.");
+			newLine(2);
+			sleep(1);
+			
+			printf("*Team Bot Annie Cal gets %d Argument Points for Creativity*", nBotScoreAdded);
+			newLine(2);
+		}
+	}	
+}
+
 /*	Computes for the bot's score each round and displays their choices and points added and deducted.
 	@param	(int)	nDebateNum is the current debate iteration.
 	@param	(int)	nRound is the current round number.
@@ -534,173 +637,105 @@ playerAddScore (int nDebateNum, int nRound, char cChoice, int *nPlayerTotalScore
 */
 void
 botStatement (int nDebateNum, int nRound, int *nBotTotalScore, int *nBotScoreRoundOne, int *nBotScoreRoundTwo, int *nBotScoreRoundThree) {
-	int nScoreAdded, nPenalty, nBotScoreRound;
+	int nBotScoreAdded, nBotPenalty, nBotScoreRound;
 	
 	if (nDebateNum == 1){
 		if (nRound == 1) {
-			nScoreAdded = 3;
-			nPenalty = 2;
-			nBotScoreRound = nScoreAdded - nPenalty;
+			nBotScoreAdded = 3;
+			nBotPenalty = 2;
+			nBotScoreRound = nBotScoreAdded - nBotPenalty;
 			
 			*nBotScoreRoundOne = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
-			
-			printf("Team Bot Annie Cal responds with: It is a well-known fact that homework provides\n");
-			printf("additional unnecessary cognitive load for students!");
-			newLine(2);
-			sleep(1);
-			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nScoreAdded);
-			printf("*Team Bot Annie Cal gets -%d Argument Points for Not Citing Sources*", nPenalty);
-			newLine(2);
 		}
 		
 		else if (nRound == 2) {
-			nScoreAdded = 3;
-			nPenalty = 1;
-			nBotScoreRound = nScoreAdded - nPenalty;
+			nBotScoreAdded = 3;
+			nBotPenalty = 1;
+			nBotScoreRound = nBotScoreAdded - nBotPenalty;
 			
 			*nBotScoreRoundTwo = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
-			
-			printf("Team Bot Annie Cal responds with: There are better ways to asses learning other than\n");
-			printf("homeworks!");
-			newLine(2);
-			sleep(1);
-			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Assertiveness*\n", nScoreAdded);
-			printf("*Team Bot Annie Cal gets -%d Argument Points for No Evidence*", nPenalty);
-			newLine(2);
 		}
 		
 		else if (nRound == 3) {
-			nScoreAdded = 3;
-			nPenalty = 0;
-			nBotScoreRound = nScoreAdded - nPenalty;
+			nBotScoreAdded = 3;
+			nBotPenalty = 0;
+			nBotScoreRound = nBotScoreAdded - nBotPenalty;
 			
 			*nBotScoreRoundThree = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
-			
-			printf("Team Bot Annie Cal responds with: Learning also happens on weekends despite homework,\n");
-			printf("when students get to reflect on class discussions.");
-			newLine(2);
-			sleep(1);
-			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Compelling Argument*", nScoreAdded);
-			newLine(2);
 		}
 	}
 	
 	else if (nDebateNum == 2) {
 		if (nRound == 1) {
-			nScoreAdded = 3;
-			nPenalty = 0;
-			nBotScoreRound = nScoreAdded - nPenalty;
+			nBotScoreAdded = 3;
+			nBotPenalty = 0;
+			nBotScoreRound = nBotScoreAdded - nBotPenalty;
 			
 			*nBotScoreRoundOne = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
-			
-			printf("Team Bot Annie Cal responds with: Shifting our focus to Mars may lead to neglect towards sustaining Earth.");
-			newLine(2);
-			sleep(1);
-			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Environmentalism*", nScoreAdded);
-			newLine(2);
 		}
 		
 		else if (nRound == 2) {
-			nScoreAdded = 3;
-			nPenalty = 0;
-			nBotScoreRound = nScoreAdded - nPenalty;
+			nBotScoreAdded = 3;
+			nBotPenalty = 0;
+			nBotScoreRound = nBotScoreAdded - nBotPenalty;
 			
 			*nBotScoreRoundTwo = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
-			
-			printf("Team Bot Annie Cal responds with: We may risk contaminating the Martian environment.");
-			newLine(2);
-			sleep(1);
-			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Contamination-Conscious*", nScoreAdded);
-			newLine(2);
 		}
 		
 		else if (nRound == 3) {
-			nScoreAdded = 3;
-			nPenalty = 2;
-			nBotScoreRound = nScoreAdded - nPenalty;
+			nBotScoreAdded = 3;
+			nBotPenalty = 2;
+			nBotScoreRound = nBotScoreAdded - nBotPenalty;
 			
 			*nBotScoreRoundThree = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
-			
-			printf("Team Bot Annie Cal responds with: All that we need is on Earth.");
-			newLine(2);
-			sleep(1);
-			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Contentedness*\n", nScoreAdded);
-			printf("*Team Bot Annie Cal gets -%d Argument Points for Denial of Current Issues*", nPenalty);
-			newLine(2);
 		}
 	}
 	
 	else if (nDebateNum == 3) {
 		if (nRound == 1) {
-			nScoreAdded = 3;
-			nPenalty = 0;
-			nBotScoreRound = nScoreAdded - nPenalty;
+			nBotScoreAdded = 3;
+			nBotPenalty = 0;
+			nBotScoreRound = nBotScoreAdded - nBotPenalty;
 			
 			*nBotScoreRoundOne = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
-			
-			printf("Team Bot Annie Cal responds with: League of Legends has a bigger playerbase.");
-			newLine(2);
-			sleep(1);
-			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Healthy Playerbase*", nScoreAdded);
-			newLine(2);
 		}
 		
 		else if (nRound == 2) {
-			nScoreAdded = 3;
-			nPenalty = 0;
-			nBotScoreRound = nScoreAdded - nPenalty;
+			nBotScoreAdded = 3;
+			nBotPenalty = 0;
+			nBotScoreRound = nBotScoreAdded - nBotPenalty;
 			
 			*nBotScoreRoundTwo = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
-			
-			printf("Team Bot Annie Cal responds with: League of Legends doesn't have a very steep learning curve to play.");
-			newLine(2);
-			sleep(1);
-			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Accessibility*", nScoreAdded);
-			newLine(2);
 		}
 		
 		else if (nRound == 3) {
-			nScoreAdded = 3;
-			nPenalty = 0;
-			nBotScoreRound = nScoreAdded - nPenalty;
+			nBotScoreAdded = 3;
+			nBotPenalty = 0;
+			nBotScoreRound = nBotScoreAdded - nBotPenalty;
 			
 			*nBotScoreRoundThree = nBotScoreRound;
 			
 			*nBotTotalScore += nBotScoreRound;
-			
-			printf("Team Bot Annie Cal responds with: League of Legends is better promoted with short animated movies and original songs.");
-			newLine(2);
-			sleep(1);
-			
-			printf("*Team Bot Annie Cal gets %d Argument Points for Creativity*", nScoreAdded);
-			newLine(2);
 		}
 	}
-	sleep(1);
+	botRoundScoreSummary(nDebateNum, nRound, nBotScoreAdded, nBotPenalty);
+	sleep(2);
 }
 
 /*	Used mainly for nRoundXChoice variables to convert from cChoice ASCII value to proper integer.
